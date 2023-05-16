@@ -4,7 +4,7 @@ use warnings;
 
 use Music::Percussion::Tabla ();
 
-my $bpm = shift || 220;
+my $bpm = shift || 260;
 
 my $tabla = Music::Percussion::Tabla->new(
     file    => "$0.mid",
@@ -82,6 +82,15 @@ $tabla->ka;
 $tabla->ga;
 $tabla->te;
 $tabla->ta;
+$tabla->rest($tabla->whole);
+
+for my $i (1 .. 3) {
+    $tabla->ta;
+    $tabla->ta;
+    $tabla->tun;
+    $tabla->ga;
+    $tabla->rest($tabla->quarter);
+}
 $tabla->rest($tabla->whole);
 
 =for private
