@@ -423,6 +423,24 @@ CONF
     return $config;
 }
 
+=head2 play_timidity
+
+  $tabla->play_timidity;
+  $tabla->play_timidity($filename);
+
+Play the tabla score with timidity.
+
+=cut
+
+sub play_timidity {
+    my ($self, $filename) = @_;
+    $filename ||= './timidity-tabla.cfg';
+    $self->timidity_conf($filename);
+    $self->write;
+    my @cmd = ('timidity', '-c', $filename, $self->file);
+    system(@cmd) == 0 or die "system(@cmd) failed: $?";
+}
+
 1;
 __END__
 
