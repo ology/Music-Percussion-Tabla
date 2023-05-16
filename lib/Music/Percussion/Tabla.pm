@@ -39,14 +39,14 @@ Default: F<dist_dir()/Tabla.sf2>
 
 =cut
 
-has soundfont => (
-    is      => 'ro',
-    default => sub {
-      my $dir = eval { dist_dir('Music-Percussion-Tabla') };
-      $dir ||= 'share';
-      return $dir . '/Tabla.sf2';
-    },
-);
+has soundfont => (is => 'lazy');
+
+sub _build_soundfont {
+    my ($self) = @_;
+    my $dir = eval { dist_dir('Music-Percussion-Tabla') };
+    $dir ||= 'share';
+    return $dir . '/Tabla.sf2';
+}
 
 =head1 METHODS
 
