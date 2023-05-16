@@ -12,8 +12,8 @@ subtest defaults => sub {
     ];
 
     is $obj->verbose, 1, 'verbose';
-    like $obj->soundfont, qr/\/Tabla\.sf2/, 'soundfont';
-    like $obj->timidity_conf, qr/\/Tabla\.sf2/, 'timidity_conf';
+    like $obj->soundfont, qr/\/Tabla\.sf2$/, 'soundfont';
+    like $obj->timidity_conf, qr/\/Tabla\.sf2$/, 'timidity_conf';
 };
 
 done_testing();
