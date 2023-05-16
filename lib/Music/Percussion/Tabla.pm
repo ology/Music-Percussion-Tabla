@@ -63,6 +63,14 @@ Here are "non-tabla player" descriptions of the sounds:
   29 88  ringing mid
   ...
 
+Only a few are named in this module. To play the others, just do this to add to the score:
+
+  $tabla->note($tabla->eighth, 79);
+
+For baya and daya simultaneously, that would be:
+
+  $tabla->note($tabla->eighth, 79, 87);
+
 =head1 ATTRIBUTES
 
 =head2 soundfont
