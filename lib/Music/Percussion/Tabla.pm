@@ -48,6 +48,16 @@ sub _build_soundfont {
     return $dir . '/Tabla.sf2';
 }
 
+=head2 tun_num
+
+  $tun_num = $tabla->tun_num;
+
+Default: C<60>
+
+=cut
+
+has tun_num => (is => 'ro', default => sub { 60 });
+
 =head2 ta_num
 
   $ta_num = $tabla->ta_num;
@@ -151,6 +161,20 @@ sub BUILD {
 sub DEMOLISH {
     my ($self, $in_global_destruction) = @_;
     # TODO disable tabla soundfont?
+}
+
+=head2 tun
+
+  $tabla->tun;
+  $tabla->tun($tabla->sixteenth);
+
+Daya bol: tun
+
+=cut
+
+sub tun {
+    my ($self, $dura) = @_;
+    $self->_strike($dura, $self->tun_num);
 }
 
 =head2 ta
