@@ -1,6 +1,7 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Always set the channel to 0.
 
 0.0100 2023-05-16 13:31:25
     - Tediously study and codify the instruction links in the SEE ALSO section.
