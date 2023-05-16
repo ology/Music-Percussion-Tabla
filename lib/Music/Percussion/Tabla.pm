@@ -421,7 +421,9 @@ CONF
   $tabla->play_timidity;
   $tabla->play_timidity($filename);
 
-Play the tabla score with timidity.
+Play the tabla score with timidity. If a B<filename> is given, it is
+used for the timidity configuration. Otherwise a filename of
+C<timidity-tabla.cfg> is used.
 
 =cut
 
