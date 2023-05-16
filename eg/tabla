@@ -43,4 +43,16 @@ for my $i (1 .. $tabla->bars) {
     $tabla->ga;
 }
 
+for my $i (1 .. $tabla->bars) {
+    $tabla->dha;
+}
+
+for my $i (1 .. $tabla->bars) {
+    $tabla->dhin;
+}
+
+for my $i (1 .. $tabla->bars) {
+    $tabla->tirkit;
+}
+
 $tabla->write;
