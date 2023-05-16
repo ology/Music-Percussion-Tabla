@@ -4,15 +4,15 @@ package Music::Percussion::Tabla;
 
 our $VERSION = '0.0100';
 
+use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util MIDI-Drummer-Tiny);
+
 use Moo;
 use Carp qw(croak);
-use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util);
 use MIDI::Util qw(dura_size reverse_dump);
 use File::ShareDir qw(dist_dir);
 use strictures 2;
 use namespace::clean;
 
-use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Drummer-Tiny);
 extends 'MIDI::Drummer::Tiny';
 
 =head1 SYNOPSIS
