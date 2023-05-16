@@ -25,7 +25,43 @@ extends 'MIDI::Drummer::Tiny';
 
 =head1 DESCRIPTION
 
-A C<Music::Percussion::Tabla> is a Moo module.
+C<Music::Percussion::Tabla> provides named associations between tabla
+drum sounds and the included soundfont file.
+
+Here are "non-tabla player" descriptions of the sounds:
+
+  # MIDI Description
+  ...
+   1 60  ringing mid
+   2 61  muted low
+   3 62  slap
+   4 63  ringing mid slap
+   5 64  low knock
+   6 65  muted ringing low
+   7 66  lower
+   8 67  low-up
+   9 68  muted slap
+  10 69  ringing low
+  11 70  flam slap
+  12 71  loud tap
+  13 72  lowest mute
+  14 73  ringing low
+  15 74  muted low
+  16 75  loud tap double
+  17 76  high-low
+  18 77  high slap
+  19 78  tap
+  20 79  high knock
+  21 80  short low-up
+  22 81  mid tap
+  23 82  muted tap
+  24 83  mid
+  25 84  muted
+  26 85  loud mid double
+  27 86  slightly more muted
+  28 87  low mid
+  29 88  ringing mid
+  ...
 
 =head1 ATTRIBUTES
 
