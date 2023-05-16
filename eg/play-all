@@ -16,6 +16,7 @@ my $t = Music::Percussion::Tabla->new(
 my @patches = (60 .. 88);
 
 for my $p (@patches) {
+    print "Patch: $p\n";
     $t->note($t->quarter, $p) for 1 .. $t->beats;
     $t->rest($t->half);
 }
