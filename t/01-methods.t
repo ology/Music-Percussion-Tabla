@@ -13,11 +13,11 @@ subtest defaults => sub {
     is $obj->verbose, 1, 'verbose';
     is $obj->channel, 0, 'channel';
     like $obj->soundfont, qr/\/Tabla\.sf2$/, 'soundfont';
-    like $obj->timidity_conf, qr/\/Tabla\.sf2$/, 'timidity_conf';
 };
 
 subtest timidity_conf => sub {
     my $obj = new_ok 'Music::Percussion::Tabla';
+    like $obj->timidity_conf, qr/\/Tabla\.sf2$/, 'timidity_conf';
     my $filename = './timidity_conf';
     $obj->timidity_conf($filename);
     ok -e $filename, 'timidity_conf with filename';
