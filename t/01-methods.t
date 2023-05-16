@@ -11,6 +11,7 @@ subtest defaults => sub {
         verbose => 1,
     ];
     is $obj->verbose, 1, 'verbose';
+    is $obj->channel, 0, 'channel';
     like $obj->soundfont, qr/\/Tabla\.sf2$/, 'soundfont';
     like $obj->timidity_conf, qr/\/Tabla\.sf2$/, 'timidity_conf';
 };
