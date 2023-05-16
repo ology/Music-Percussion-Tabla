@@ -14,6 +14,7 @@ my $tabla = Music::Percussion::Tabla->new(
     volume  => 127,
     verbose => 1,
 );
+#warn __PACKAGE__,' L',__LINE__,' ',$tabla->soundfont,"\n";
 
 for my $i (1 .. $tabla->bars) {
     $tabla->ta;
