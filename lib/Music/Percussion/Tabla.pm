@@ -428,7 +428,13 @@ __END__
 
 =head1 SEE ALSO
 
+L<File::Slurper>
+
+L<MIDI::Util>
+
 L<Moo>
+
+L<File::ShareDir>
 
 L<https://www.wikihow.com/Play-Tabla>
 
