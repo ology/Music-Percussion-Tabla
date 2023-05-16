@@ -6,11 +6,13 @@ use Test::More;
 
 use_ok 'Music::Percussion::Tabla';
 
-my $obj = new_ok 'Music::Percussion::Tabla' => [
-    verbose => 1,
-];
+subtest defaults => sub {
+    my $obj = new_ok 'Music::Percussion::Tabla' => [
+        verbose => 1,
+    ];
 
-is $obj->verbose, 1, 'verbose';
-is $obj->soundfont, 'share/Tabla.sf2', 'soundfont';
+    is $obj->verbose, 1, 'verbose';
+    is $obj->soundfont, 'share/Tabla.sf2', 'soundfont';
+};
 
 done_testing();
