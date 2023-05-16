@@ -48,6 +48,76 @@ sub _build_soundfont {
     return $dir . '/Tabla.sf2';
 }
 
+=head2 ta_num
+
+  $ta_num = $tabla->ta_num;
+
+Default: C<71>
+
+=cut
+
+has ta_num => (is => 'ro', default => sub { 71 });
+
+=head2 tin_num
+
+  $tin_num = $tabla->tin_num;
+
+Default: C<82>
+
+=cut
+
+has tin_num => (is => 'ro', default => sub { 82 });
+
+=head2 tu_num
+
+  $tu_num = $tabla->tu_num;
+
+Default: C<87>
+
+=cut
+
+has tu_num => (is => 'ro', default => sub { 87 });
+
+=head2 te_num
+
+  $te_num = $tabla->te_num;
+
+Default: C<62>
+
+=cut
+
+has te_num => (is => 'ro', default => sub { 62 });
+
+=head2 tete_num
+
+  $tete_num = $tabla->tete_num;
+
+Default: C<77>
+
+=cut
+
+has tete_num => (is => 'ro', default => sub { 77 });
+
+=head2 ka_num
+
+  $ka_num = $tabla->ka_num;
+
+Default: C<68>
+
+=cut
+
+has ka_num => (is => 'ro', default => sub { 68 });
+
+=head2 ga_num
+
+  $ga_num = $tabla->ga_num;
+
+Default: C<63>
+
+=cut
+
+has ga_num => (is => 'ro', default => sub { 63 });
+
 =head1 METHODS
 
 =head2 new
@@ -80,13 +150,11 @@ sub DEMOLISH {
 
 Daya bol: ta/na
 
-Default note: C<71>
-
 =cut
 
 sub ta {
     my ($self, $dura) = @_;
-    $self->_strike($dura, 71);
+    $self->_strike($dura, $self->ta_num);
 }
 
 =head2 tin
@@ -96,13 +164,11 @@ sub ta {
 
 Daya bol: tin
 
-Default note: C<82>
-
 =cut
 
 sub tin {
     my ($self, $dura) = @_;
-    $self->_strike($dura, 82);
+    $self->_strike($dura, $self->tin_num);
 }
 
 =head2 tu
@@ -112,13 +178,11 @@ sub tin {
 
 Daya bol: tu
 
-Default note: C<87>
-
 =cut
 
 sub tu {
     my ($self, $dura) = @_;
-    $self->_strike($dura, 87);
+    $self->_strike($dura, $self->tu_num);
 }
 
 =head2 te
@@ -128,13 +192,11 @@ sub tu {
 
 Daya bol: te
 
-Default note: C<62>
-
 =cut
 
 sub te {
     my ($self, $dura) = @_;
-    $self->_strike($dura, 62);
+    $self->_strike($dura, $self->te_num);
 }
 
 =head2 tete
@@ -142,9 +204,7 @@ sub te {
   $tabla->tete;
   $tabla->tete($tabla->sixteenth);
 
-Daya bol: tete
-
-Default notes: C<te>, C<64>
+Daya bol: tete = C<te> + C<tete_num>
 
 =cut
 
@@ -154,7 +214,7 @@ sub tete {
     $dura = dura_size($dura) / 2;
     my $dump = reverse_dump('length');
     $self->te($dump->{$dura});
-    $self->_strike($dump->{$dura}, 77);
+    $self->_strike($dump->{$dura}, $self->tete_num);
 }
 
 =head2 ka
@@ -164,13 +224,11 @@ sub tete {
 
 Baya bol: ka/ki/ke/kath
 
-Default note: C<68>
-
 =cut
 
 sub ka {
     my ($self, $dura) = @_;
-    $self->_strike($dura, 68);
+    $self->_strike($dura, $self->ka_num);
 }
 
 =head2 ga
@@ -180,13 +238,11 @@ sub ka {
 
 Baya bol: ga/gha/ge/ghe
 
-Default note: C<63>
-
 =cut
 
 sub ga {
     my ($self, $dura) = @_;
-    $self->_strike($dura, 63);
+    $self->_strike($dura, $self->ga_num);
 }
 
 =head2 dha
@@ -200,7 +256,7 @@ Baya bol: dha = C<ga> + C<ta>
 
 sub dha {
     my ($self, $dura) = @_;
-    $self->_double_strike($dura, 63, 71);
+    $self->_double_strike($dura, $self->ga_num, $self->ta_num);
 }
 
 =head2 dhin
@@ -214,7 +270,7 @@ Baya bol: dhin = C<ga> + C<tin>
 
 sub dhin {
     my ($self, $dura) = @_;
-    $self->_double_strike($dura, 63, 82);
+    $self->_double_strike($dura, $self->ga_num, $self->tin_num);
 }
 
 =head2 tirkit
