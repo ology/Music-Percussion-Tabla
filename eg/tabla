@@ -84,6 +84,8 @@ $tabla->te;
 $tabla->ta;
 $tabla->rest($tabla->whole);
 
+=for private
+
 for my $i (1 .. $tabla->beats) {
     $tabla->tun;
 }
@@ -120,5 +122,7 @@ for my $i (1 .. $tabla->beats) {
 for my $i (1 .. $tabla->beats) {
     $tabla->tirkit;
 }
+
+=cut
 
 $tabla->write;
