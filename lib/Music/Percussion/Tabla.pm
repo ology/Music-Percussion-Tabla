@@ -118,6 +118,16 @@ Default: C<63>
 
 has ga_num => (is => 'ro', default => sub { 63 });
 
+=head2 ga_slide_num
+
+  $ga_slide_num = $tabla->ga_slide_num;
+
+Default: C<67>
+
+=cut
+
+has ga_slide_num => (is => 'ro', default => sub { 67 });
+
 =head1 METHODS
 
 =head2 new
@@ -243,6 +253,20 @@ Baya bol: ga/gha/ge/ghe
 sub ga {
     my ($self, $dura) = @_;
     $self->_strike($dura, $self->ga_num);
+}
+
+=head2 ga_slide
+
+  $tabla->ga_slide;
+  $tabla->ga_slide($tabla->sixteenth);
+
+Baya bol: ga/gha/ge/ghe with wrist slide to syahi
+
+=cut
+
+sub ga_slide {
+    my ($self, $dura) = @_;
+    $self->_strike($dura, $self->ga_slide_num);
 }
 
 =head2 dha
