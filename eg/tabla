@@ -15,6 +15,30 @@ my $tabla = Music::Percussion::Tabla->new(
 );
 #warn __PACKAGE__,' L',__LINE__,' ',$tabla->soundfont,"\n";
 
+# bol practice
+$tabla->tun;
+$tabla->rest($tabla->quarter);
+$tabla->ta;
+$tabla->tun;
+$tabla->tin;
+$tabla->tin;
+$tabla->tun;
+$tabla->ta;
+$tabla->te;
+$tabla->te;
+$tabla->ta;
+$tabla->tun;
+$tabla->ta;
+$tabla->tun;
+$tabla->ta;
+$tabla->tun;
+$tabla->tun;
+$tabla->tin;
+$tabla->tin;
+$tabla->ta;
+$tabla->ta;
+$tabla->rest($tabla->whole);
+
 for my $i (1 .. $tabla->beats) {
     $tabla->tun;
 }
