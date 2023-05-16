@@ -400,6 +400,23 @@ sub _double_strike {
     $self->note($dura, $pitch1, $pitch2);
 }
 
+=head2 timidity_conf
+
+  $timidity_conf = $tabla->timidity_conf;
+
+A suggested timidity.cfg paragraph to allow you to use this soundfont in timidity.
+
+=cut
+
+sub timidity_conf {
+    my ($self) = @_;
+    my $soundfont = $self->soundfont;
+    return <<"CONF";
+# https://gleitz.github.io/midi-js-soundfonts/
+soundfont $soundfont
+CONF
+}
+
 1;
 __END__
 
