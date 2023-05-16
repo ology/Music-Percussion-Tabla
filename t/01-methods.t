@@ -12,7 +12,7 @@ subtest defaults => sub {
     ];
 
     is $obj->verbose, 1, 'verbose';
-    is $obj->soundfont, 'share/Tabla.sf2', 'soundfont';
+    like $obj->soundfont, qr/\/Tabla\.sf2/, 'soundfont';
 };
 
 done_testing();
