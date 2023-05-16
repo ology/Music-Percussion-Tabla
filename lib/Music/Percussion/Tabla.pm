@@ -2,7 +2,7 @@ package Music::Percussion::Tabla;
 
 # ABSTRACT: Play the tabla!
 
-our $VERSION = '0.0102';
+our $VERSION = '0.0103';
 
 use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util MIDI-Drummer-Tiny);
 
