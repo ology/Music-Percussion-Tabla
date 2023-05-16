@@ -41,7 +41,11 @@ Default: F<dist_dir()/Tabla.sf2>
 
 has soundfont => (
     is      => 'ro',
-    default => sub { dist_dir('Music-Percussion-Tabla') . '/Tabla.sf2' },
+    default => sub {
+      my $dir = eval { dist_dir('Music-Percussion-Tabla') };
+      $dir ||= 'share';
+      return $dir . '/Tabla.sf2';
+    },
 );
 
 =head1 METHODS
