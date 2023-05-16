@@ -1,0 +1,38 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+use Music::Percussion::Tabla ();
+
+my $bars = shift || 4;
+my $bpm  = shift || 100;
+
+my $tabla = Music::Percussion::Tabla->new(
+    file    => "$0.mid",
+    bpm     => $bpm,
+    channel => 0,
+    volume  => 127,
+    verbose => 1,
+);
+
+for my $i (1 .. $tabla->bars) {
+    $tabla->ta;
+}
+
+for my $i (1 .. $tabla->bars) {
+    $tabla->tin;
+}
+
+for my $i (1 .. $tabla->bars) {
+    $tabla->tu;
+}
+
+for my $i (1 .. $tabla->bars) {
+    $tabla->te;
+}
+
+for my $i (1 .. $tabla->bars) {
+    $tabla->tete;
+}
+
+$tabla->write;
