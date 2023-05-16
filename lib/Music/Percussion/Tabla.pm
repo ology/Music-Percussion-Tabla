@@ -8,6 +8,7 @@ use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util MIDI-Drummer-Tiny);
 
 use Moo;
 use Carp qw(croak);
+use File::Slurper qw(write_text);
 use MIDI::Util qw(dura_size reverse_dump);
 use File::ShareDir qw(dist_dir);
 use strictures 2;
@@ -403,18 +404,23 @@ sub _double_strike {
 =head2 timidity_conf
 
   $timidity_conf = $tabla->timidity_conf;
+  $tabla->timidity_conf($filename);
 
-A suggested timidity.cfg paragraph to allow you to use this soundfont in timidity.
+A suggested timidity.cfg paragraph to allow you to use this soundfont
+in timidity. If a B<filename> is given, the timidity configuration is
+written to that file.
 
 =cut
 
 sub timidity_conf {
-    my ($self) = @_;
+    my ($self, $filename) = @_;
     my $soundfont = $self->soundfont;
-    return <<"CONF";
+    my $config = <<"CONF";
 # https://gleitz.github.io/midi-js-soundfonts/
 soundfont $soundfont
 CONF
+    write_text($filename, $config) if $filename;
+    return $config;
 }
 
 1;
