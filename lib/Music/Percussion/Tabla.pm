@@ -192,20 +192,6 @@ sub dhin {
     $self->_double_strike($dura, 63, 82);
 }
 
-=head2 dhin
-
-  $tabla->dhin;
-  $tabla->dhin($tabla->sixteenth);
-
-Baya bol: dhin = C<ga> + C<tin>
-
-=cut
-
-sub dhin {
-    my ($self, $dura) = @_;
-    $self->_double_strike($dura, 63, 82);
-}
-
 =head2 tirkit
 
   $tabla->tirkit;
