@@ -7,7 +7,6 @@ our $VERSION = '0.0101';
 use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util MIDI-Drummer-Tiny);
 
 use Moo;
-use Carp qw(croak);
 use File::Slurper qw(write_text);
 use MIDI::Util qw(dura_size reverse_dump);
 use File::ShareDir qw(dist_dir);
