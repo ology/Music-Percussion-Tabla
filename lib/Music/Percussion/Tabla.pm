@@ -194,8 +194,6 @@ possible properties of L<MIDI::Drummer::Tiny>.
 
 =for Pod::Coverage BUILD
 
-=for Pod::Coverage DEMOLISH
-
 =cut
 
 sub BUILD {
