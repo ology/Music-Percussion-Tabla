@@ -28,7 +28,7 @@ extends 'MIDI::Drummer::Tiny';
 C<Music::Percussion::Tabla> provides named associations between tabla
 drum sounds and the included soundfont file.
 
-Here are "non-tabla player" descriptions of the sounds:
+Here are my "non-tabla player" descriptions of the sounds:
 
   # MIDI Description
   ...
