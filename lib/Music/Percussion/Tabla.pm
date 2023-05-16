@@ -5,10 +5,11 @@ package Music::Percussion::Tabla;
 our $VERSION = '0.0100';
 
 use Moo;
+use Carp qw(croak);
 use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util);
 use MIDI::Util qw(dura_size reverse_dump);
+use File::ShareDir qw(dist_dir);
 use strictures 2;
-use Carp qw(croak);
 use namespace::clean;
 
 use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Drummer-Tiny);
@@ -18,11 +19,30 @@ extends 'MIDI::Drummer::Tiny';
 
   use Music::Percussion::Tabla ();
 
-  my $tabla = Music::Percussion::Tabla->new(verbose => 1);
+  my $tabla = Music::Percussion::Tabla->new;
+
+  say $tabla->soundfont;
 
 =head1 DESCRIPTION
 
 A C<Music::Percussion::Tabla> is a Moo module.
+
+=head1 ATTRIBUTES
+
+=head2 soundfont
+
+  $soundfont = $tabla->soundfont;
+
+The file location, where the tabla soundfont resides.
+
+Default: F<dist_dir()/Tabla.sf2>
+
+=cut
+
+has soundfont => (
+    is      => 'ro',
+    default => sub { dist_dir('Music-Percussion-Tabla') . '/Tabla.sf2' },
+);
 
 =head1 METHODS
 
