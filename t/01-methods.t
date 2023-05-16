@@ -12,6 +12,7 @@ subtest defaults => sub {
     ];
     is $obj->verbose, 1, 'verbose';
     is $obj->channel, 0, 'channel';
+    diag 'Soundfont file: ', $obj->soundfont;
     like $obj->soundfont, qr/\/Tabla\.sf2$/, 'soundfont';
 };
 
