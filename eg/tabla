@@ -4,7 +4,6 @@ use warnings;
 
 use Music::Percussion::Tabla ();
 
-my $bars = shift || 4;
 my $bpm  = shift || 120;
 
 my $tabla = Music::Percussion::Tabla->new(
