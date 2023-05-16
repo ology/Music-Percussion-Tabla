@@ -11,5 +11,6 @@ my $obj = new_ok 'Music::Percussion::Tabla' => [
 ];
 
 is $obj->verbose, 1, 'verbose';
+is $obj->soundfont, 'share/Tabla.sf2', 'soundfont';
 
 done_testing();
