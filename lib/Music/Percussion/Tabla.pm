@@ -53,7 +53,7 @@ sub DEMOLISH {
   $tabla->ta;
   $tabla->ta($tabla->sixteenth);
 
-Daya bol: ta
+Daya bol: ta/na
 
 Default note: C<71>
 
@@ -132,11 +132,43 @@ sub tete {
     $self->_strike($dump->{$dura}, 77);
 }
 
+=head2 ka
+
+  $tabla->ka;
+  $tabla->ka($tabla->sixteenth);
+
+Baya bol: ka/ki/ke/kath
+
+Default note: C<68>
+
+=cut
+
+sub ka {
+    my ($self, $dura) = @_;
+    $self->_strike($dura, 68);
+}
+
 sub _strike {
     my ($self, $dura, $pitch) = @_;
     $dura  ||= $self->quarter;
     $pitch ||= 60;
     $self->note($dura, $pitch);
+}
+
+=head2 ga
+
+  $tabla->ga;
+  $tabla->ga($tabla->sixteenth);
+
+Baya bol: ga/gha/ge/ghe
+
+Default note: C<63>
+
+=cut
+
+sub ga {
+    my ($self, $dura) = @_;
+    $self->_strike($dura, 63);
 }
 
 1;
