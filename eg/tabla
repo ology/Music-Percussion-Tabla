@@ -18,47 +18,36 @@ my $tabla = Music::Percussion::Tabla->new(
 for my $i (1 .. $tabla->beats) {
     $tabla->tun;
 }
-
 for my $i (1 .. $tabla->beats) {
     $tabla->ta;
 }
-
 for my $i (1 .. $tabla->beats) {
     $tabla->tin;
 }
-
 for my $i (1 .. $tabla->beats) {
     $tabla->tu;
 }
-
 for my $i (1 .. $tabla->beats) {
     $tabla->te;
 }
-
 for my $i (1 .. $tabla->beats) {
     $tabla->tete;
 }
-
 for my $i (1 .. $tabla->beats) {
     $tabla->ka;
 }
-
 for my $i (1 .. $tabla->beats) {
     $tabla->ga;
 }
-
 for my $i (1 .. $tabla->beats) {
     $tabla->ga_slide;
 }
-
 for my $i (1 .. $tabla->beats) {
     $tabla->dha;
 }
-
 for my $i (1 .. $tabla->beats) {
     $tabla->dhin;
 }
-
 for my $i (1 .. $tabla->beats) {
     $tabla->tirkit;
 }
