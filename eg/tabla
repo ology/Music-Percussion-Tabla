@@ -57,6 +57,33 @@ $tabla->tin;
 $tabla->ta;
 $tabla->rest($tabla->whole);
 
+$tabla->ga;
+$tabla->te;
+$tabla->ka;
+$tabla->ga;
+$tabla->rest($tabla->quarter);
+$tabla->ka;
+$tabla->ta;
+$tabla->rest($tabla->quarter);
+$tabla->ta;
+$tabla->ga;
+$tabla->ta;
+$tabla->ka;
+$tabla->ta;
+$tabla->ka;
+$tabla->tu;
+$tabla->ta;
+$tabla->ta;
+$tabla->ga;
+$tabla->ta;
+$tabla->tin;
+$tabla->ta;
+$tabla->ka;
+$tabla->ga;
+$tabla->te;
+$tabla->ta;
+$tabla->rest($tabla->whole);
+
 for my $i (1 .. $tabla->beats) {
     $tabla->tun;
 }
