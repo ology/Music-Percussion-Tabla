@@ -1,4 +1,6 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Tediously study and codify the instruction links in the SEE ALSO section.
+    - Make this magically work with timidity.
     - Mint with Dist::Zilla.
