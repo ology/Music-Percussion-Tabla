@@ -5,7 +5,7 @@ use warnings;
 use Music::Percussion::Tabla ();
 
 my $bars = shift || 4;
-my $bpm  = shift || 100;
+my $bpm  = shift || 120;
 
 my $tabla = Music::Percussion::Tabla->new(
     file    => "$0.mid",
@@ -42,6 +42,10 @@ for my $i (1 .. $tabla->bars) {
 
 for my $i (1 .. $tabla->bars) {
     $tabla->ga;
+}
+
+for my $i (1 .. $tabla->bars) {
+    $tabla->ga_slide;
 }
 
 for my $i (1 .. $tabla->bars) {
