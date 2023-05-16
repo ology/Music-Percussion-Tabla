@@ -200,12 +200,7 @@ possible properties of L<MIDI::Drummer::Tiny>.
 
 sub BUILD {
     my ($self, $args) = @_;
-    # TODO install-enable tabla soundfont?
-}
-
-sub DEMOLISH {
-    my ($self, $in_global_destruction) = @_;
-    # TODO disable tabla soundfont?
+    $self->set_channel(0);
 }
 
 =head2 tun
