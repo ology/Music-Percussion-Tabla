@@ -21,8 +21,6 @@ extends 'MIDI::Drummer::Tiny';
 
   my $tabla = Music::Percussion::Tabla->new;
 
-  say $tabla->soundfont;
-
   for my $i (1 .. 3) {
       $tabla->ta;
       $tabla->ta;
@@ -31,6 +29,8 @@ extends 'MIDI::Drummer::Tiny';
       $tabla->rest($tabla->quarter);
   }
   $tabla->rest($tabla->whole);
+
+  say $tabla->soundfont;
 
   $tabla->timidity_conf('/tmp/timidity.cfg'); # save the cfg
   $tabla->write; # save the score as a MIDI file
