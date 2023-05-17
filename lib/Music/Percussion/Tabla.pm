@@ -32,11 +32,11 @@ extends 'MIDI::Drummer::Tiny';
   }
   $tabla->rest($t->whole);
 
-  $t->timidity_conf('/tmp/timidity.cfg'); # save the cfg
-  $t->write; # save the score as a MIDI file
+  $tabla->timidity_conf('/tmp/timidity.cfg'); # save the cfg
+  $tabla->write; # save the score as a MIDI file
 
   # OR:
-  $t->play_timidity; # play the MIDI with timidity
+  $tabla->play_timidity; # play the MIDI with timidity
 
 =head1 DESCRIPTION
 
