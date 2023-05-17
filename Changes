@@ -2,6 +2,7 @@ Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
     - Fix eg/* programs.
+    - Add a note-to-score test.
 
 0.0105 2023-05-17 06:55:30
     - Improve documentation again.
