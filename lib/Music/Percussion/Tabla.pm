@@ -28,7 +28,6 @@ extends 'MIDI::Drummer::Tiny';
       $tabla->ga;
       $tabla->rest($tabla->quarter);
   }
-  $tabla->rest($tabla->whole);
 
   say $tabla->soundfont;
 
