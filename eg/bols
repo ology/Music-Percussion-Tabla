@@ -12,7 +12,6 @@ my $t = Music::Percussion::Tabla->new(
     volume => 127,
 );
 
-# bol practice
 $t->tun;
 $t->rest($t->quarter);
 $t->ta;
