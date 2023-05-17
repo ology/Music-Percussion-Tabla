@@ -1,6 +1,9 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Improve documentation.
+
+0.0103 2023-05-16 16:10:45
     - Add the eg/play-all program.
 
 0.0102 2023-05-16 14:05:28
