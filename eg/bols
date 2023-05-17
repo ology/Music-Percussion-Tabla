@@ -89,46 +89,5 @@ for my $i (1 .. 3) {
 }
 $t->rest($t->whole);
 
-=for private
-
-for my $i (1 .. $t->beats) {
-    $t->tun;
-}
-for my $i (1 .. $t->beats) {
-    $t->ta;
-}
-for my $i (1 .. $t->beats) {
-    $t->tin;
-}
-for my $i (1 .. $t->beats) {
-    $t->tu;
-}
-for my $i (1 .. $t->beats) {
-    $t->te;
-}
-for my $i (1 .. $t->beats) {
-    $t->tete;
-}
-for my $i (1 .. $t->beats) {
-    $t->ka;
-}
-for my $i (1 .. $t->beats) {
-    $t->ga;
-}
-for my $i (1 .. $t->beats) {
-    $t->ga_slide;
-}
-for my $i (1 .. $t->beats) {
-    $t->dha;
-}
-for my $i (1 .. $t->beats) {
-    $t->dhin;
-}
-for my $i (1 .. $t->beats) {
-    $t->tirkit;
-}
-
-=cut
-
 #$t->write;
 $t->play_timidity;
