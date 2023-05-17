@@ -4,11 +4,9 @@ use warnings;
 
 use Music::Percussion::Tabla ();
 
-my $bpm = shift || 100;
-
 my $t = Music::Percussion::Tabla->new(
     file   => "$0.mid",
-    bpm    => $bpm,
+    bpm    => 100,
     volume => 127,
 );
 #warn __PACKAGE__,' L',__LINE__,' ',$t->soundfont,"\n";exit;
