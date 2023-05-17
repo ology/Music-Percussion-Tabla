@@ -24,13 +24,13 @@ extends 'MIDI::Drummer::Tiny';
   say $tabla->soundfont;
 
   for my $i (1 .. 3) {
-      $t->ta;
-      $t->ta;
-      $t->tun;
-      $t->ga;
-      $t->rest($t->quarter);
+      $tabla->ta;
+      $tabla->ta;
+      $tabla->tun;
+      $tabla->ga;
+      $tabla->rest($t->quarter);
   }
-  $t->rest($t->whole);
+  $tabla->rest($t->whole);
 
   $t->timidity_conf('/tmp/timidity.cfg'); # save the cfg
   $t->write; # save the score as a MIDI file
