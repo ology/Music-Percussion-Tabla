@@ -11,7 +11,6 @@ my $t = Music::Percussion::Tabla->new(
     bpm    => $bpm,
     volume => 127,
 );
-#warn __PACKAGE__,' L',__LINE__,' ',$t->soundfont,"\n";exit;
 
 # bol practice
 $t->tun;
