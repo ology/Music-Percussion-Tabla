@@ -462,11 +462,11 @@ L<Moo>
 
 L<File::ShareDir>
 
+L<https://gleitz.github.io/midi-js-soundfonts/Tabla/Tabla.sf2>
+
 L<https://www.wikihow.com/Play-Tabla>
 
 L<https://www.taalgyan.com/theory/basic-bols-on-tabla/>
-
-L<https://gleitz.github.io/midi-js-soundfonts/Tabla/Tabla.sf2>
 
 L<https://kksongs.org/tabla/chapter02.html> &
 L<https://kksongs.org/tabla/chapter03.html>
