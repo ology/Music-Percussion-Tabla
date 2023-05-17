@@ -23,6 +23,21 @@ extends 'MIDI::Drummer::Tiny';
 
   say $tabla->soundfont;
 
+  for my $i (1 .. 3) {
+      $t->ta;
+      $t->ta;
+      $t->tun;
+      $t->ga;
+      $t->rest($t->quarter);
+  }
+  $t->rest($t->whole);
+
+  $t->timidity_conf('/tmp/timidity.cfg'); # save the cfg
+  $t->write; # save the score as a MIDI file
+
+  # OR:
+  $t->play_timidity; # play the MIDI with timidity
+
 =head1 DESCRIPTION
 
 C<Music::Percussion::Tabla> provides named associations between tabla
