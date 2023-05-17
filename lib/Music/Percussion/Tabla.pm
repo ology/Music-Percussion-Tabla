@@ -419,33 +419,33 @@ written to that file.
 =cut
 
 sub timidity_conf {
-    my ($self, $filename) = @_;
+    my ($self, $config_file) = @_;
     my $soundfont = $self->soundfont;
     my $config = <<"CONF";
 # https://gleitz.github.io/midi-js-soundfonts/
 soundfont $soundfont
 CONF
-    write_text($filename, $config) if $filename;
+    write_text($config_file, $config) if $config_file;
     return $config;
 }
 
 =head2 play_timidity
 
   $tabla->play_timidity;
-  $tabla->play_timidity($filename);
+  $tabla->play_timidity($config_file);
 
-Play the tabla score with timidity. If a B<filename> is given, it is
+Play the tabla score with timidity. If a B<config_file> is given, it is
 used for the timidity configuration. Otherwise a filename of
 C<timidity-tabla.cfg> is used.
 
 =cut
 
 sub play_timidity {
-    my ($self, $filename) = @_;
-    $filename ||= './timidity-tabla.cfg';
-    $self->timidity_conf($filename);
+    my ($self, $config_file) = @_;
+    $config_file ||= './timidity-tabla.cfg';
+    $self->timidity_conf($config_file);
     $self->write;
-    my @cmd = ('timidity', '-c', $filename, $self->file);
+    my @cmd = ('timidity', '-c', $config_file, $self->file);
     system(@cmd) == 0 or die "system(@cmd) failed: $?";
 }
 
