@@ -36,7 +36,7 @@ extends 'MIDI::Drummer::Tiny';
   $tabla->write; # save the score as a MIDI file
 
   # OR:
-  $tabla->play_timidity; # play the MIDI with timidity
+  $tabla->play_timidity; # play the score with timidity
 
 =head1 DESCRIPTION
 
