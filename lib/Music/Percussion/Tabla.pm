@@ -410,11 +410,11 @@ sub _double_strike {
 =head2 timidity_conf
 
   $timidity_conf = $tabla->timidity_conf;
-  $tabla->timidity_conf($filename);
+  $tabla->timidity_conf($config_file);
 
 A suggested timidity.cfg paragraph to allow you to use this soundfont
-in timidity. If a B<filename> is given, the timidity configuration is
-written to that file.
+in timidity. If a B<config_file> is given, the timidity configuration
+is written to that file.
 
 =cut
 
@@ -434,8 +434,8 @@ CONF
   $tabla->play_timidity;
   $tabla->play_timidity($config_file);
 
-Play the tabla score with timidity. If a B<config_file> is given, it is
-used for the timidity configuration. Otherwise a filename of
+Play the tabla score with timidity. If a B<config_file> is given,
+it is used for the timidity configuration. Otherwise a filename of
 C<timidity-tabla.cfg> is used.
 
 =cut
