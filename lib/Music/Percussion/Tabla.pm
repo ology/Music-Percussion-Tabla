@@ -28,9 +28,9 @@ extends 'MIDI::Drummer::Tiny';
       $tabla->ta;
       $tabla->tun;
       $tabla->ga;
-      $tabla->rest($t->quarter);
+      $tabla->rest($tabla->quarter);
   }
-  $tabla->rest($t->whole);
+  $tabla->rest($tabla->whole);
 
   $tabla->timidity_conf('/tmp/timidity.cfg'); # save the cfg
   $tabla->write; # save the score as a MIDI file
