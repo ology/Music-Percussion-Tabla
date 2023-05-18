@@ -1,6 +1,7 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Use the timidity methods of the latest M::D::T.
 
 0.0106 2023-05-17 07:47:20
     - Fix eg/* programs.
