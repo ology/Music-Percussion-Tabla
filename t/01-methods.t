@@ -16,12 +16,12 @@ subtest defaults => sub {
     like $obj->soundfont, qr/\/Tabla\.sf2$/, 'soundfont';
 };
 
-subtest timidity_conf => sub {
+subtest timidity_cfg => sub {
     my $obj = new_ok 'Music::Percussion::Tabla';
-    like $obj->timidity_conf, qr/\/Tabla\.sf2$/, 'timidity_conf';
-    my $filename = './timidity_conf';
-    $obj->timidity_conf($filename);
-    ok -e $filename, 'timidity_conf with filename';
+    like $obj->timidity_cfg, qr/\/Tabla\.sf2$/, 'timidity_cfg';
+    my $filename = './timidity_cfg';
+    $obj->timidity_cfg($filename);
+    ok -e $filename, 'timidity_cfg with filename';
     unlink $filename;# or diag "Can't unlink $filename: $!";
     ok !-e $filename, 'file unlinked';
 };
