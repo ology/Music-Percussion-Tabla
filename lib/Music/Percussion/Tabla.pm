@@ -31,11 +31,11 @@ extends 'MIDI::Drummer::Tiny';
 
   say $tabla->soundfont;
 
-  $tabla->timidity_conf('/tmp/timidity.cfg'); # save the cfg
+  $tabla->timidity_cfg('/tmp/timidity.cfg'); # save the cfg
   $tabla->write; # save the score as a MIDI file
 
   # OR:
-  $tabla->play_timidity; # play the score with timidity
+  $tabla->play_with_timidity; # play the score with timidity
 
 =head1 DESCRIPTION
 
@@ -405,48 +405,6 @@ sub _double_strike {
     $pitch1 ||= 60;
     $pitch2 ||= 61;
     $self->note($dura, $pitch1, $pitch2);
-}
-
-=head2 timidity_conf
-
-  $timidity_conf = $tabla->timidity_conf;
-  $tabla->timidity_conf($config_file);
-
-A suggested timidity.cfg paragraph to allow you to use this soundfont
-in timidity. If a B<config_file> is given, the timidity configuration
-is written to that file.
-
-=cut
-
-sub timidity_conf {
-    my ($self, $config_file) = @_;
-    my $soundfont = $self->soundfont;
-    my $config = <<"CONF";
-# https://gleitz.github.io/midi-js-soundfonts/
-soundfont $soundfont
-CONF
-    write_text($config_file, $config) if $config_file;
-    return $config;
-}
-
-=head2 play_timidity
-
-  $tabla->play_timidity;
-  $tabla->play_timidity($config_file);
-
-Play the tabla score with timidity. If a B<config_file> is given,
-it is used for the timidity configuration. Otherwise a filename of
-C<timidity-tabla.cfg> is used.
-
-=cut
-
-sub play_timidity {
-    my ($self, $config_file) = @_;
-    $config_file ||= './timidity-tabla.cfg';
-    $self->timidity_conf($config_file);
-    $self->write;
-    my @cmd = ('timidity', '-c', $config_file, $self->file);
-    system(@cmd) == 0 or die "system(@cmd) failed: $?";
 }
 
 1;
