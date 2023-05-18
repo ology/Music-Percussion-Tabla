@@ -88,4 +88,4 @@ for my $i (1 .. 3) {
     $t->rest($t->quarter);
 }
 
-$t->play_timidity;
+$t->play_with_timidity;
