@@ -4,8 +4,6 @@ package Music::Percussion::Tabla;
 
 our $VERSION = '0.0200';
 
-use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util MIDI-Drummer-Tiny);
-
 use Moo;
 use File::Slurper qw(write_text);
 use MIDI::Util qw(dura_size reverse_dump);
