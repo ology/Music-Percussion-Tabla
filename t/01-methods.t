@@ -7,10 +7,8 @@ use Test::More;
 use_ok 'Music::Percussion::Tabla';
 
 subtest defaults => sub {
-    my $obj = new_ok 'Music::Percussion::Tabla' => [
-        verbose => 1,
-    ];
-    is $obj->verbose, 1, 'verbose';
+    my $obj = new_ok 'Music::Percussion::Tabla';
+    is $obj->verbose, 0, 'verbose';
     is $obj->channel, 0, 'channel';
     diag 'Soundfont file: ', $obj->soundfont;
     like $obj->soundfont, qr/\/Tabla\.sf2$/, 'soundfont';
