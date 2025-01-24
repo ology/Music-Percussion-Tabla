@@ -1,6 +1,7 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Improve documentation.
 
 0.0200 2023-05-17 19:57:40
     - Use the timidity methods of the latest M::D::T.
