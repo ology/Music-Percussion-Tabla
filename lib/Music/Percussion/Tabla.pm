@@ -220,10 +220,6 @@ __END__
 
 =head1 SEE ALSO
 
-L<File::Slurper>
-
-L<MIDI::Util>
-
 L<Moo>
 
 L<File::ShareDir>
