@@ -90,7 +90,7 @@ To play patches simultaneously, that would be:
 
 The file location, where the tabla soundfont resides.
 
-Default: F<dist_dir()/Tabla.sf2>
+Default: C<dist_dir()/Tabla.sf2>
 
 =cut
 
