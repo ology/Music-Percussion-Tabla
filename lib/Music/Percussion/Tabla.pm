@@ -26,8 +26,8 @@ extends 'MIDI::Drummer::Tiny';
   for my $i (1 .. 3) {
     $t->ta($t->eighth);
     $t->ta($t->eighth);
-    $t->tun($t->quarter);
-    $t->ga($t->quarter);
+    $t->tun;
+    $t->ga;
     $t->rest($t->quarter);
   }
 
@@ -126,18 +126,20 @@ sub BUILD {
     $self->set_channel(0);
 }
 
-=head2 tun
+=head2 ti
 
-  $tabla->tun;
-  $tabla->tun($tabla->sixteenth);
+  $tabla->ti;
+  $tabla->ti($tabla->sixteenth, $index);
 
-Daya bol: tun
+Daya bol: ti
 
 =cut
 
-sub tun {
-    my ($self, $dura) = @_;
-    $self->_strike($dura, $self->tun_num);
+sub ti {
+    my ($self, $dura, $index) = @_;
+    my @patches = qw(61 68 70 72 82 86);
+    my $patch = _patch_index(\@patches, $index);
+    $self->_strike($dura, $patch);
 }
 
 =head2 ta
@@ -145,13 +147,15 @@ sub tun {
   $tabla->ta;
   $tabla->ta($tabla->sixteenth);
 
-Daya bol: ta/na
+Daya bol: ta
 
 =cut
 
 sub ta {
-    my ($self, $dura) = @_;
-    $self->_strike($dura, $self->ta_num);
+    my ($self, $dura, $index) = @_;
+    my @patches = qw(71 75 85 88);
+    my $patch = _patch_index(\@patches, $index);
+    $self->_strike($dura, $patch);
 }
 
 =head2 tin
@@ -164,36 +168,73 @@ Daya bol: tin
 =cut
 
 sub tin {
-    my ($self, $dura) = @_;
-    $self->_strike($dura, $self->tin_num);
+    my ($self, $dura, $index) = @_;
+    my @patches = qw(60 63 83 87);
+    my $patch = _patch_index(\@patches, $index);
+    $self->_strike($dura, $patch);
 }
 
-=head2 tu
+=head2 tun
 
-  $tabla->tu;
-  $tabla->tu($tabla->sixteenth);
-
-Daya bol: tu
+  $tabla->tun;
+  $tabla->tun($tabla->sixteenth);
 
 =cut
 
-sub tu {
-    my ($self, $dura) = @_;
-    $self->_strike($dura, $self->tu_num);
+sub tun {
+    my ($self, $dura, $index) = @_;
+    my @patches = qw(73);
+    my $patch = _patch_index(\@patches, $index);
+    $self->_strike($dura, $patch);
 }
 
-=head2 te
 
-  $tabla->te;
-  $tabla->te($tabla->sixteenth);
+=head2 ke
 
-Daya bol: te
+  $tabla->ke;
+  $tabla->ke($tabla->sixteenth);
+
+Baya bol: ka/ki/ke/kath
 
 =cut
 
-sub te {
-    my ($self, $dura) = @_;
-    $self->_strike($dura, $self->te_num);
+sub ke {
+    my ($self, $dura, $index) = @_;
+    my @patches = qw(64 77 79);
+    my $patch = _patch_index(\@patches, $index);
+    $self->_strike($dura, $patch);
+}
+
+=head2 ge
+
+  $tabla->ge;
+  $tabla->ge($tabla->sixteenth);
+
+Baya bol: ga/gha/ge/ghe
+
+=cut
+
+sub ge {
+    my ($self, $dura, $index) = @_;
+    my @patches = qw(65 66 76);
+    my $patch = _patch_index(\@patches, $index);
+    $self->_strike($dura, $patch);
+}
+
+=head2 dhun
+
+  $tabla->dhun;
+  $tabla->dhun($tabla->sixteenth);
+
+Baya bol: ga/gha/ge/ghe with wrist slide to syahi
+
+=cut
+
+sub dhun {
+    my ($self, $dura, $index) = @_;
+    my @patches = qw(67 80);
+    my $patch = _patch_index(\@patches, $index);
+    $self->_strike($dura, $patch);
 }
 
 =head2 tete
@@ -212,48 +253,6 @@ sub tete {
     my $dump = reverse_dump('length');
     $self->te($dump->{$dura});
     $self->_strike($dump->{$dura}, $self->tete_num);
-}
-
-=head2 ka
-
-  $tabla->ka;
-  $tabla->ka($tabla->sixteenth);
-
-Baya bol: ka/ki/ke/kath
-
-=cut
-
-sub ka {
-    my ($self, $dura) = @_;
-    $self->_strike($dura, $self->ka_num);
-}
-
-=head2 ga
-
-  $tabla->ga;
-  $tabla->ga($tabla->sixteenth);
-
-Baya bol: ga/gha/ge/ghe
-
-=cut
-
-sub ga {
-    my ($self, $dura) = @_;
-    $self->_strike($dura, $self->ga_num);
-}
-
-=head2 ga_slide
-
-  $tabla->ga_slide;
-  $tabla->ga_slide($tabla->sixteenth);
-
-Baya bol: ga/gha/ge/ghe with wrist slide to syahi
-
-=cut
-
-sub ga_slide {
-    my ($self, $dura) = @_;
-    $self->_strike($dura, $self->ga_slide_num);
 }
 
 =head2 dha
@@ -317,6 +316,12 @@ sub _double_strike {
     $pitch1 ||= 60;
     $pitch2 ||= 61;
     $self->note($dura, $pitch1, $pitch2);
+}
+
+sub _patch_index {
+    my ($patches, $index) = @_;
+    $index = int rand @$patches if !defined $index || $index < 0;
+    return $patches->[$index];
 }
 
 1;
