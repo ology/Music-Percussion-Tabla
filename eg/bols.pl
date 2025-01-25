@@ -14,7 +14,8 @@ my $t = Music::Percussion::Tabla->new(
 );
 
 for (1 .. $max) {
-    $t->note($t->quarter, 60); # tin
+    $t->strike('tin');
+    # $t->note($t->quarter, 60); # tin
     # $t->note($t->quarter, 63); # tin
     # $t->note($t->quarter, 83); # tin muted
     # $t->note($t->quarter, 87); # tin muted
