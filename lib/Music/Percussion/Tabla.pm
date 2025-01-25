@@ -96,7 +96,7 @@ Default: F<dist_dir()/Tabla.sf2>
 
 =cut
 
-has soundfont => (is => 'lazy');
+has soundfont => (is => 'ro');
 
 sub _build_soundfont {
     my ($self) = @_;
