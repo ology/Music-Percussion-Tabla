@@ -14,13 +14,42 @@ my $t = Music::Percussion::Tabla->new(
 );
 
 for (1 .. $max) {
-    $t->note($t->quarter, 60);
-    # $t->ga;
+    $t->note($t->quarter, 67);
 }
 
 $t->play_with_timidity;
 
 __END__
+60 = tin
+61 = ti
+62
+63 = tin
+64 = ke
+65 = ge
+66 = ge
+67 = dhun
+68 = ti
+69 = 
+70 = ti
+71 = ta
+72 = ti
+73 = tun
+74 = 
+75 = ta
+76 = ge
+77 = ke
+78 = na
+79 = ke
+80 = 
+81 = na
+82 = ti
+83 = tin
+84 = ti
+85 = ta
+86 = ti
+87 = tin
+88 = ta
+
 $t->tun;
 $t->rest($t->quarter);
 $t->ta;
