@@ -110,6 +110,8 @@ sub _build_soundfont {
 
   $patches = $tabla->patches;
 
+Each bol can be 1 or more patch numbers.
+
 Default bol patches:
 
   dhun: 67 80
