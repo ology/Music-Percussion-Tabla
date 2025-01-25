@@ -80,7 +80,7 @@ score:
 
   $tabla->note($tabla->eighth, 79);
 
-For baya and daya simultaneously, that would be:
+To play patches simultaneously, that would be:
 
   $tabla->note($tabla->eighth, 79, 87);
 
