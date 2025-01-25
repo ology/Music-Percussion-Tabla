@@ -5,15 +5,14 @@ use warnings;
 use Music::Percussion::Tabla ();
 
 my $bpm = shift || 100;
-my $max = shift || 4;
 
 my $t = Music::Percussion::Tabla->new(
-    file   => "$0.mid",
     bpm    => $bpm,
     volume => 127,
+    # beats  => 4,
 );
 
-for (1 .. $max) {
+for (1 .. $t->beats) {
     $t->strike('tin');
     # $t->note($t->quarter, 60); # tin
     # $t->note($t->quarter, 63); # tin
