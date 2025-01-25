@@ -5,7 +5,6 @@ use warnings;
 use Music::Percussion::Tabla ();
 
 my $t = Music::Percussion::Tabla->new(
-    file   => "$0.mid",
     bpm    => 100,
     volume => 127,
 );
