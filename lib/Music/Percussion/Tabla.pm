@@ -180,17 +180,11 @@ that patch.
 
 sub strike {
     my ($self, $bol, $dura, $index) = @_;
+    $dura ||= $self->quarter;
     my $patches = $self->patches->{$bol};
-    my $patch = _patch_index($patches, $index);
-    $patch ||= 60;
-    $dura  ||= $self->quarter;
+    $index = int rand @$patches if $patches && (!defined $index || $index < 0);
+    my $patch = $patches->[$index] || 60;
     $self->note($dura, $patch);
-}
-
-sub _patch_index {
-    my ($patches, $index) = @_;
-    $index = int rand @$patches if !defined $index || $index < 0;
-    return $patches->[$index];
 }
 
 1;
