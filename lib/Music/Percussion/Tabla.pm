@@ -75,7 +75,7 @@ Here are my "non-tabla player" descriptions of the sounds:
   29 88   ta   - ringing mid
   ...
 
-To play patches by number, do this to add to the C<84>th mininum entry
+To play patches by number, do this to add to the C<84>th MIDInum entry
 score:
 
   $tabla->note($tabla->eighth, 79);
