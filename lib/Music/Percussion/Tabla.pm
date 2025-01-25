@@ -63,12 +63,12 @@ Here are my "non-tabla player" descriptions of the sounds:
   17 76   ge   - high-low
   18 77   ke   - high slap
   19 78   na   - tap
-  20 79   ke   - high knock
-  21 80   ?    - short low-up
+  20 79   ?    - high knock
+  21 80   dhun - short low-up
   22 81   na   - mid tap
   23 82   ti   - muted tap
   24 83   tin  - mid
-  25 84   ti   - muted
+  25 84   ?    - muted
   26 85   ta   - loud mid double
   27 86   ti   - slightly more muted
   28 87   tin  - low mid
