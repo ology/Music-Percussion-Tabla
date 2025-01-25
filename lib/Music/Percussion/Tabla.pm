@@ -80,7 +80,7 @@ this to add to the C<84>th MIDInum entry score:
 
 To play patches simultaneously, that would be:
 
-  $tabla->note($tabla->eighth, 79, 84);
+  $tabla->note($tabla->eighth, 84, 79);
 
 =head1 ATTRIBUTES
 
