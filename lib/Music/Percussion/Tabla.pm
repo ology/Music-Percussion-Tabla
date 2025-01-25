@@ -261,67 +261,11 @@ sub tete {
     $self->_strike($dump->{$dura}, $self->tete_num);
 }
 
-=head2 dha
-
-  $tabla->dha;
-  $tabla->dha($tabla->sixteenth);
-
-Baya bol: dha = C<ga> + C<ta>
-
-=cut
-
-sub dha {
-    my ($self, $dura) = @_;
-    $self->_double_strike($dura, $self->ga_num, $self->ta_num);
-}
-
-=head2 dhin
-
-  $tabla->dhin;
-  $tabla->dhin($tabla->sixteenth);
-
-Baya bol: dhin = C<ga> + C<tin>
-
-=cut
-
-sub dhin {
-    my ($self, $dura) = @_;
-    $self->_double_strike($dura, $self->ga_num, $self->tin_num);
-}
-
-=head2 tirkit
-
-  $tabla->tirkit;
-  $tabla->tirkit($tabla->sixteenth);
-
-Baya bol: tirkit = C<tete> + C<ka> + C<te>
-
-=cut
-
-sub tirkit {
-    my ($self, $dura) = @_;
-    $dura ||= $self->quarter;
-    $dura = dura_size($dura) / 2;
-    my $dura2 = $dura / 2;
-    my $dump = reverse_dump('length');
-    $self->tete($dump->{$dura});
-    $self->ka($dump->{$dura2});
-    $self->te($dump->{$dura2});
-}
-
 sub _strike {
     my ($self, $dura, $pitch) = @_;
     $dura  ||= $self->quarter;
     $pitch ||= 60;
     $self->note($dura, $pitch);
-}
-
-sub _double_strike {
-    my ($self, $dura, $pitch1, $pitch2) = @_;
-    $dura   ||= $self->quarter;
-    $pitch1 ||= 60;
-    $pitch2 ||= 61;
-    $self->note($dura, $pitch1, $pitch2);
 }
 
 sub _patch_index {
