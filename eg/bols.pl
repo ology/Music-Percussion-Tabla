@@ -22,7 +22,7 @@ $t->play_with_timidity;
 __END__
 60 = tin
 61 = ti
-62
+62 = 
 63 = tin
 64 = ke
 65 = ge
