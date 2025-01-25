@@ -1,6 +1,7 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Fix the eg/ programs slightly.
 
 0.0402 2025-01-25 12:18:56
     - Simplify the code even more!
