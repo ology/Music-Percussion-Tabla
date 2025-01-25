@@ -202,8 +202,6 @@ sub tun {
   $tabla->ke;
   $tabla->ke($tabla->sixteenth);
 
-Baya bol: ka/ki/ke/kath
-
 =cut
 
 sub ke {
@@ -218,8 +216,6 @@ sub ke {
   $tabla->ge;
   $tabla->ge($tabla->sixteenth);
 
-Baya bol: ga/gha/ge/ghe
-
 =cut
 
 sub ge {
@@ -233,8 +229,6 @@ sub ge {
 
   $tabla->dhun;
   $tabla->dhun($tabla->sixteenth);
-
-Baya bol: ga/gha/ge/ghe with wrist slide to syahi
 
 =cut
 
