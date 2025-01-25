@@ -184,7 +184,6 @@ sub strike {
     my $patch = _patch_index($patches, $index);
     $patch ||= 60;
     $dura  ||= $self->quarter;
-    $self->_strike($dura, $patch);
     $self->note($dura, $patch);
 }
 
