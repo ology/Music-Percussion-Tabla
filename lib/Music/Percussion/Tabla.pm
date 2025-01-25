@@ -130,7 +130,8 @@ sub BUILD {
   $tabla->dhun($duration);
   $tabla->dhun($duration, $index);
 
-Where the B<duration> is a note length like C<$tabla-E<gt>eighth>.
+Where the B<duration> is a note length like C<$tabla-E<gt>eighth> (or
+C<'en'> in MIDI-Perl notation)..
 
 Defaults:
 
