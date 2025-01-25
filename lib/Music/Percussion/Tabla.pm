@@ -27,7 +27,7 @@ extends 'MIDI::Drummer::Tiny';
     $t->ta($t->eighth);
     $t->ta($t->eighth);
     $t->tun;
-    $t->ga;
+    $t->ge;
     $t->rest($t->quarter);
   }
 
