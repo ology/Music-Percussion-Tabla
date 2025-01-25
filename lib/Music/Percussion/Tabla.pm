@@ -133,7 +133,7 @@ sub BUILD {
 Where the B<duration> is a note length like C<$tabla-E<gt>eighth> (or
 C<'en'> in MIDI-Perl notation).
 
-Defaults:
+Default patches:
 
   dhun: 67 80
   ge:   65 66 76
