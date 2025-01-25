@@ -1,6 +1,8 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+
+0.0300 2025-01-25 10:05:02
     - Entirely refactor and prune unknown bits.
     - Improve documentation.
     - Improve eg/ programs.
