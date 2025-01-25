@@ -200,7 +200,7 @@ L<Moo>
 
 L<File::ShareDir>
 
-L<https://gleitz.github.io/midi-js-soundfonts/Tabla/Tabla.sf2>
+L<https://gleitz.github.io/midi-js-soundfonts/Tabla/Tabla.sf2> (4.1MB)
 
 L<https://www.wikihow.com/Play-Tabla>
 
