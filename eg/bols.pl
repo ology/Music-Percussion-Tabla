@@ -5,7 +5,7 @@ use warnings;
 use Music::Percussion::Tabla ();
 
 my $bpm = shift || 100;
-my $max = shift || 8;
+my $max = shift || 4;
 
 my $t = Music::Percussion::Tabla->new(
     file   => "$0.mid",
@@ -14,7 +14,8 @@ my $t = Music::Percussion::Tabla->new(
 );
 
 for (1 .. $max) {
-    $t->note($t->quarter, 67);
+    $t->note($t->quarter, 62);
+    $t->note($t->quarter, 63);
 }
 
 $t->play_with_timidity;
