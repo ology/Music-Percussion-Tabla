@@ -182,14 +182,10 @@ sub strike {
     my ($self, $bol, $dura, $index) = @_;
     my $patches = $self->patches->{$bol};
     my $patch = _patch_index($patches, $index);
-    $self->_strike($dura, $patch);
-}
-
-sub _strike {
-    my ($self, $dura, $pitch) = @_;
+    $patch ||= 60;
     $dura  ||= $self->quarter;
-    $pitch ||= 60;
-    $self->note($dura, $pitch);
+    $self->_strike($dura, $patch);
+    $self->note($dura, $patch);
 }
 
 sub _patch_index {
