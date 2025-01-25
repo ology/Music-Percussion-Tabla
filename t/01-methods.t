@@ -26,7 +26,7 @@ subtest timidity_cfg => sub {
 
 subtest score => sub {
     my $obj = new_ok 'Music::Percussion::Tabla';
-    $obj->ta;
+    $obj->strike('ta');
     my @score = $obj->score->Score;
     is $score[4][0], 'note', 'note added';
 };
