@@ -124,10 +124,22 @@ sub BUILD {
     $self->set_channel(0);
 }
 
-=head2 dhun
+=head2 dhun, ge, ke, na, ta, ti, tin, tun
 
-  $tabla->dhun;
-  $tabla->dhun($tabla->sixteenth);
+  $tabla->dhun; # & etc methods
+  $tabla->dhun($duration);
+  $tabla->dhun($duration, $index);
+
+Defaults:
+
+  dhun: 67 80
+  ge:   65 66 76
+  ke:   64 77 79
+  na:   78 81
+  ta:   71 75 85 88
+  ti:   61 68 70 72 82 86
+  tin:  60 63 83 87
+  tun:  73
 
 =cut
 
@@ -138,26 +150,12 @@ sub dhun {
     $self->_strike($dura, $patch);
 }
 
-=head2 ge
-
-  $tabla->ge;
-  $tabla->ge($tabla->sixteenth);
-
-=cut
-
 sub ge {
     my ($self, $dura, $index) = @_;
     my @patches = qw(65 66 76);
     my $patch = _patch_index(\@patches, $index);
     $self->_strike($dura, $patch);
 }
-
-=head2 ke
-
-  $tabla->ke;
-  $tabla->ke($tabla->sixteenth);
-
-=cut
 
 sub ke {
     my ($self, $dura, $index) = @_;
@@ -166,26 +164,12 @@ sub ke {
     $self->_strike($dura, $patch);
 }
 
-=head2 na
-
-  $tabla->na;
-  $tabla->na($tabla->sixteenth);
-
-=cut
-
 sub na {
     my ($self, $dura, $index) = @_;
     my @patches = qw(78 81);
     my $patch = _patch_index(\@patches, $index);
     $self->_strike($dura, $patch);
 }
-
-=head2 ta
-
-  $tabla->ta;
-  $tabla->ta($tabla->sixteenth);
-
-=cut
 
 sub ta {
     my ($self, $dura, $index) = @_;
@@ -194,13 +178,6 @@ sub ta {
     $self->_strike($dura, $patch);
 }
 
-=head2 ti
-
-  $tabla->ti;
-  $tabla->ti($tabla->sixteenth, $index);
-
-=cut
-
 sub ti {
     my ($self, $dura, $index) = @_;
     my @patches = qw(61 68 70 72 82 86);
@@ -208,26 +185,12 @@ sub ti {
     $self->_strike($dura, $patch);
 }
 
-=head2 tin
-
-  $tabla->tin;
-  $tabla->tin($tabla->sixteenth);
-
-=cut
-
 sub tin {
     my ($self, $dura, $index) = @_;
     my @patches = qw(60 63 83 87);
     my $patch = _patch_index(\@patches, $index);
     $self->_strike($dura, $patch);
 }
-
-=head2 tun
-
-  $tabla->tun;
-  $tabla->tun($tabla->sixteenth);
-
-=cut
 
 sub tun {
     my ($self, $dura, $index) = @_;
