@@ -10,6 +10,7 @@ subtest defaults => sub {
     my $obj = new_ok 'Music::Percussion::Tabla';
     is $obj->verbose, 0, 'verbose';
     is $obj->channel, 0, 'channel';
+    isa_ok $obj->score, 'MIDI::Simple';
     diag 'Soundfont file: ', $obj->soundfont;
     like $obj->soundfont, qr/\/Tabla\.sf2$/, 'soundfont';
 };
