@@ -22,8 +22,8 @@ extends 'MIDI::Drummer::Tiny';
   say $t->soundfont;
 
   for my $i (1 .. 3) {
-    $t->strike('ta, $t->eighth);
-    $t->strike('ta, $t->eighth);
+    $t->strike('ta', $t->eighth);
+    $t->strike('ta', $t->eighth);
     $t->strike('tun');
     $t->strike('ge');
     $t->rest($t->quarter);
