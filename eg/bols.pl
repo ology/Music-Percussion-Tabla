@@ -14,7 +14,7 @@ my $t = Music::Percussion::Tabla->new(
 );
 
 for (1 .. $max) {
-    # $t->note($t->quarter, 60); # tin
+    $t->note($t->quarter, 60); # tin
     # $t->note($t->quarter, 63); # tin
     # $t->note($t->quarter, 83); # tin muted
     # $t->note($t->quarter, 87); # tin muted
@@ -31,6 +31,7 @@ for (1 .. $max) {
     # $t->note($t->quarter, 66); # ge
     # $t->note($t->quarter, 76); # ge
     # $t->note($t->quarter, 67); # dhun
+    # $t->note($t->quarter, 80); # dhun
     # $t->note($t->quarter, 71); # ta
     # $t->note($t->quarter, 75); # ta
     # $t->note($t->quarter, 85); # ta
@@ -38,11 +39,10 @@ for (1 .. $max) {
     # $t->note($t->quarter, 73); # tun
     # $t->note($t->quarter, 78); # na
     # $t->note($t->quarter, 81); # na muted
-    $t->note($t->quarter, 62); # ?
-    $t->note($t->quarter, 69); # ?
-    $t->note($t->quarter, 74); # ?
-    $t->note($t->quarter, 80); # ?
-    $t->note($t->quarter, 84); # ?
+    # $t->note($t->quarter, 62); # ?
+    # $t->note($t->quarter, 69); # ?
+    # $t->note($t->quarter, 74); # ? quiet
+    # $t->note($t->quarter, 84); # ?
 }
 
 $t->play_with_timidity;
