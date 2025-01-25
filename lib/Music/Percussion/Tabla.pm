@@ -131,8 +131,6 @@ sub BUILD {
   $tabla->ti;
   $tabla->ti($tabla->sixteenth, $index);
 
-Daya bol: ti
-
 =cut
 
 sub ti {
@@ -147,8 +145,6 @@ sub ti {
   $tabla->ta;
   $tabla->ta($tabla->sixteenth);
 
-Daya bol: ta
-
 =cut
 
 sub ta {
@@ -162,8 +158,6 @@ sub ta {
 
   $tabla->tin;
   $tabla->tin($tabla->sixteenth);
-
-Daya bol: tin
 
 =cut
 
@@ -241,8 +235,6 @@ sub dhun {
 
   $tabla->tete;
   $tabla->tete($tabla->sixteenth);
-
-Daya bol: tete = C<te> + C<tete_num>
 
 =cut
 
