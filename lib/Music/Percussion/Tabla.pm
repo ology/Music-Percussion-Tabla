@@ -154,6 +154,20 @@ sub ta {
     $self->_strike($dura, $patch);
 }
 
+=head2 na
+
+  $tabla->na;
+  $tabla->na($tabla->sixteenth);
+
+=cut
+
+sub na {
+    my ($self, $dura, $index) = @_;
+    my @patches = qw(78 81);
+    my $patch = _patch_index(\@patches, $index);
+    $self->_strike($dura, $patch);
+}
+
 =head2 tin
 
   $tabla->tin;
