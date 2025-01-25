@@ -19,6 +19,8 @@ extends 'MIDI::Drummer::Tiny';
 
   my $t = Music::Percussion::Tabla->new;
 
+  $t->timidity_cfg('/tmp/timidity.cfg'); # optional
+
   say $t->soundfont;
 
   for my $i (1 .. 3) {
@@ -28,8 +30,6 @@ extends 'MIDI::Drummer::Tiny';
     $t->ga($t->quarter);
     $t->rest($t->quarter);
   }
-
-  $t->timidity_cfg('/tmp/timidity.cfg'); # optional
 
   $t->play_with_timidity;
   # OR:
