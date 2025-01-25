@@ -5,8 +5,6 @@ package Music::Percussion::Tabla;
 our $VERSION = '0.0200';
 
 use Moo;
-use File::Slurper qw(write_text);
-use MIDI::Util qw(dura_size reverse_dump);
 use File::ShareDir qw(dist_dir);
 use strictures 2;
 use namespace::clean;
@@ -126,16 +124,58 @@ sub BUILD {
     $self->set_channel(0);
 }
 
-=head2 ti
+=head2 dhun
 
-  $tabla->ti;
-  $tabla->ti($tabla->sixteenth, $index);
+  $tabla->dhun;
+  $tabla->dhun($tabla->sixteenth);
 
 =cut
 
-sub ti {
+sub dhun {
     my ($self, $dura, $index) = @_;
-    my @patches = qw(61 68 70 72 82 86);
+    my @patches = qw(67 80);
+    my $patch = _patch_index(\@patches, $index);
+    $self->_strike($dura, $patch);
+}
+
+=head2 ge
+
+  $tabla->ge;
+  $tabla->ge($tabla->sixteenth);
+
+=cut
+
+sub ge {
+    my ($self, $dura, $index) = @_;
+    my @patches = qw(65 66 76);
+    my $patch = _patch_index(\@patches, $index);
+    $self->_strike($dura, $patch);
+}
+
+=head2 ke
+
+  $tabla->ke;
+  $tabla->ke($tabla->sixteenth);
+
+=cut
+
+sub ke {
+    my ($self, $dura, $index) = @_;
+    my @patches = qw(64 77 79);
+    my $patch = _patch_index(\@patches, $index);
+    $self->_strike($dura, $patch);
+}
+
+=head2 na
+
+  $tabla->na;
+  $tabla->na($tabla->sixteenth);
+
+=cut
+
+sub na {
+    my ($self, $dura, $index) = @_;
+    my @patches = qw(78 81);
     my $patch = _patch_index(\@patches, $index);
     $self->_strike($dura, $patch);
 }
@@ -154,16 +194,16 @@ sub ta {
     $self->_strike($dura, $patch);
 }
 
-=head2 na
+=head2 ti
 
-  $tabla->na;
-  $tabla->na($tabla->sixteenth);
+  $tabla->ti;
+  $tabla->ti($tabla->sixteenth, $index);
 
 =cut
 
-sub na {
+sub ti {
     my ($self, $dura, $index) = @_;
-    my @patches = qw(78 81);
+    my @patches = qw(61 68 70 72 82 86);
     my $patch = _patch_index(\@patches, $index);
     $self->_strike($dura, $patch);
 }
@@ -194,65 +234,6 @@ sub tun {
     my @patches = qw(73);
     my $patch = _patch_index(\@patches, $index);
     $self->_strike($dura, $patch);
-}
-
-
-=head2 ke
-
-  $tabla->ke;
-  $tabla->ke($tabla->sixteenth);
-
-=cut
-
-sub ke {
-    my ($self, $dura, $index) = @_;
-    my @patches = qw(64 77 79);
-    my $patch = _patch_index(\@patches, $index);
-    $self->_strike($dura, $patch);
-}
-
-=head2 ge
-
-  $tabla->ge;
-  $tabla->ge($tabla->sixteenth);
-
-=cut
-
-sub ge {
-    my ($self, $dura, $index) = @_;
-    my @patches = qw(65 66 76);
-    my $patch = _patch_index(\@patches, $index);
-    $self->_strike($dura, $patch);
-}
-
-=head2 dhun
-
-  $tabla->dhun;
-  $tabla->dhun($tabla->sixteenth);
-
-=cut
-
-sub dhun {
-    my ($self, $dura, $index) = @_;
-    my @patches = qw(67 80);
-    my $patch = _patch_index(\@patches, $index);
-    $self->_strike($dura, $patch);
-}
-
-=head2 tete
-
-  $tabla->tete;
-  $tabla->tete($tabla->sixteenth);
-
-=cut
-
-sub tete {
-    my ($self, $dura) = @_;
-    $dura ||= $self->quarter;
-    $dura = dura_size($dura) / 2;
-    my $dump = reverse_dump('length');
-    $self->te($dump->{$dura});
-    $self->_strike($dump->{$dura}, $self->tete_num);
 }
 
 sub _strike {
