@@ -1,6 +1,7 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Entirely refactor and prune unknown bits.
     - Improve documentation.
     - Improve eg/ programs.
 
