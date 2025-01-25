@@ -17,23 +17,23 @@ extends 'MIDI::Drummer::Tiny';
 
   use Music::Percussion::Tabla ();
 
-  my $tabla = Music::Percussion::Tabla->new;
+  my $t = Music::Percussion::Tabla->new;
+
+  say $t->soundfont;
 
   for my $i (1 .. 3) {
-      $tabla->ta;
-      $tabla->ta;
-      $tabla->tun;
-      $tabla->ga;
-      $tabla->rest($tabla->quarter);
+    $t->ta($t->eighth);
+    $t->ta($t->eighth);
+    $t->tun($t->quarter);
+    $t->ga($t->quarter);
+    $t->rest($t->quarter);
   }
 
-  say $tabla->soundfont;
+  $t->timidity_cfg('/tmp/timidity.cfg'); # optional
 
-  $tabla->timidity_cfg('/tmp/timidity.cfg'); # save the cfg
-  $tabla->write; # save the score as a MIDI file
-
+  $t->play_with_timidity;
   # OR:
-  $tabla->play_with_timidity; # play the score with timidity
+  $t->write; # save the score as a MIDI file
 
 =head1 DESCRIPTION
 
@@ -103,96 +103,6 @@ sub _build_soundfont {
     $dir ||= 'share';
     return $dir . '/Tabla.sf2';
 }
-
-=head2 tun_num
-
-  $tun_num = $tabla->tun_num;
-
-Default: C<60>
-
-=cut
-
-has tun_num => (is => 'ro', default => sub { 60 });
-
-=head2 ta_num
-
-  $ta_num = $tabla->ta_num;
-
-Default: C<71>
-
-=cut
-
-has ta_num => (is => 'ro', default => sub { 71 });
-
-=head2 tin_num
-
-  $tin_num = $tabla->tin_num;
-
-Default: C<82>
-
-=cut
-
-has tin_num => (is => 'ro', default => sub { 82 });
-
-=head2 tu_num
-
-  $tu_num = $tabla->tu_num;
-
-Default: C<87>
-
-=cut
-
-has tu_num => (is => 'ro', default => sub { 87 });
-
-=head2 te_num
-
-  $te_num = $tabla->te_num;
-
-Default: C<62>
-
-=cut
-
-has te_num => (is => 'ro', default => sub { 62 });
-
-=head2 tete_num
-
-  $tete_num = $tabla->tete_num;
-
-Default: C<77>
-
-=cut
-
-has tete_num => (is => 'ro', default => sub { 77 });
-
-=head2 ka_num
-
-  $ka_num = $tabla->ka_num;
-
-Default: C<68>
-
-=cut
-
-has ka_num => (is => 'ro', default => sub { 68 });
-
-=head2 ga_num
-
-  $ga_num = $tabla->ga_num;
-
-Default: C<63>
-
-=cut
-
-has ga_num => (is => 'ro', default => sub { 63 });
-
-=head2 ga_slide_num
-
-  $ga_slide_num = $tabla->ga_slide_num;
-
-Default: C<67>
-
-=cut
-
-has ga_slide_num => (is => 'ro', default => sub { 67 });
 
 =head1 METHODS
 
