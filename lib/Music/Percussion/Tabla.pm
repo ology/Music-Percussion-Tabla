@@ -38,7 +38,7 @@ extends 'MIDI::Drummer::Tiny';
 =head1 DESCRIPTION
 
 C<Music::Percussion::Tabla> provides named associations between tabla
-drum sounds and the included soundfont file, which is B<4.1MB>.
+drum sounds and the included soundfont file (which is B<4.1MB>).
 
 Here are my "non-tabla player" descriptions of the sounds:
 
