@@ -22,10 +22,10 @@ extends 'MIDI::Drummer::Tiny';
   say $t->soundfont;
 
   for my $i (1 .. 3) {
-    $t->ta($t->eighth);
-    $t->ta($t->eighth);
-    $t->tun;
-    $t->ge;
+    $t->strike('ta, $t->eighth);
+    $t->strike('ta, $t->eighth);
+    $t->strike('tun');
+    $t->strike('ge');
     $t->rest($t->quarter);
   }
 
@@ -106,6 +106,39 @@ sub _build_soundfont {
     return $dir . '/Tabla.sf2';
 }
 
+=head2 patches
+
+  $patches = $tabla->patches;
+
+Default bol patches:
+
+  dhun: 67 80
+  ge:   65 66 76
+  ke:   64 77 79
+  na:   78 81
+  ta:   71 75 85 88
+  ti:   61 68 70 72 82 86
+  tin:  60 63 83 87
+  tun:  73
+
+=cut
+
+has patches => (
+    is      => 'ro',
+    default => sub {
+        {
+            dhun => [qw(67 80)],
+            ge   => [qw(65 66 76)],
+            ke   => [qw(64 77 79)],
+            na   => [qw(78 81)],
+            ta   => [qw(71 75 85 88)],
+            ti   => [qw(61 68 70 72 82 86)],
+            tin  => [qw(60 63 83 87)],
+            tun  => [qw(73)],
+        }
+    },
+);
+
 =head1 METHODS
 
 =head2 new
@@ -124,13 +157,17 @@ sub BUILD {
     $self->set_channel(0);
 }
 
-=head2 dhun, ge, ke, na, ta, ti, tin, tun
+=head2 strike
 
-  $tabla->dhun; # & etc methods
-  $tabla->dhun($duration);
-  $tabla->dhun($duration, $index);
+  $tabla->strike('dhun');
+  $tabla->strike('ge', $duration);
+  $tabla->strike('ti', $duration, $index);
 
-Where the B<duration> is a note length like C<$tabla-E<gt>eighth> (or
+Bols:
+
+  dhun, ge, ke, na, ta, ti, tin, tun
+
+The B<duration> is a note length like C<$tabla-E<gt>eighth> (or
 C<'en'> in MIDI-Perl notation).
 
 Each bol can be 1 or more patch numbers. For bols with more than one
@@ -139,72 +176,12 @@ B<index> of C<-1> will play one of the patches at random. You can of
 course, also call the method with a known patch B<index> to get only
 that patch.
 
-Default patches:
-
-  dhun: 67 80
-  ge:   65 66 76
-  ke:   64 77 79
-  na:   78 81
-  ta:   71 75 85 88
-  ti:   61 68 70 72 82 86
-  tin:  60 63 83 87
-  tun:  73
-
 =cut
 
-sub dhun {
-    my ($self, $dura, $index) = @_;
-    my @patches = qw(67 80);
-    my $patch = _patch_index(\@patches, $index);
-    $self->_strike($dura, $patch);
-}
-
-sub ge {
-    my ($self, $dura, $index) = @_;
-    my @patches = qw(65 66 76);
-    my $patch = _patch_index(\@patches, $index);
-    $self->_strike($dura, $patch);
-}
-
-sub ke {
-    my ($self, $dura, $index) = @_;
-    my @patches = qw(64 77 79);
-    my $patch = _patch_index(\@patches, $index);
-    $self->_strike($dura, $patch);
-}
-
-sub na {
-    my ($self, $dura, $index) = @_;
-    my @patches = qw(78 81);
-    my $patch = _patch_index(\@patches, $index);
-    $self->_strike($dura, $patch);
-}
-
-sub ta {
-    my ($self, $dura, $index) = @_;
-    my @patches = qw(71 75 85 88);
-    my $patch = _patch_index(\@patches, $index);
-    $self->_strike($dura, $patch);
-}
-
-sub ti {
-    my ($self, $dura, $index) = @_;
-    my @patches = qw(61 68 70 72 82 86);
-    my $patch = _patch_index(\@patches, $index);
-    $self->_strike($dura, $patch);
-}
-
-sub tin {
-    my ($self, $dura, $index) = @_;
-    my @patches = qw(60 63 83 87);
-    my $patch = _patch_index(\@patches, $index);
-    $self->_strike($dura, $patch);
-}
-
-sub tun {
-    my ($self, $dura, $index) = @_;
-    my @patches = qw(73);
-    my $patch = _patch_index(\@patches, $index);
+sub strike {
+    my ($self, $bol, $dura, $index) = @_;
+    my $patches = $self->patches->{$bol};
+    my $patch = _patch_index($patches, $index);
     $self->_strike($dura, $patch);
 }
 
@@ -225,6 +202,8 @@ sub _patch_index {
 __END__
 
 =head1 SEE ALSO
+
+The F<t/01-methods.t> and F<eg/*> programs in this distribution.
 
 L<Moo>
 
