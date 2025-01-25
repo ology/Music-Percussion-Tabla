@@ -76,11 +76,11 @@ Here are my "non-tabla player" descriptions of the sounds:
 To play patches by number, do this to add to the C<84>th MIDInum entry
 score:
 
-  $tabla->note($tabla->eighth, 79);
+  $tabla->note($tabla->eighth, 84);
 
 To play patches simultaneously, that would be:
 
-  $tabla->note($tabla->eighth, 79, 87);
+  $tabla->note($tabla->eighth, 79, 84);
 
 =head1 ATTRIBUTES
 
