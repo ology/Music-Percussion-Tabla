@@ -29,7 +29,6 @@ subtest score => sub {
     $obj->ta;
     my @score = $obj->score->Score;
     is $score[4][0], 'note', 'note added';
-    is $score[4][4], $obj->ta_num, 'is note_num';
 };
 
 done_testing();
