@@ -112,8 +112,8 @@ sub _build_soundfont {
 
   $tabla = Music::Percussion::Tabla->new(%args);
 
-Create a new C<Music::Percussion::Tabla> object. This uses all the
-possible properties of L<MIDI::Drummer::Tiny>.
+Create a new C<Music::Percussion::Tabla> object. This uses the
+assignable attributes of L<MIDI::Drummer::Tiny>.
 
 =for Pod::Coverage BUILD
 
