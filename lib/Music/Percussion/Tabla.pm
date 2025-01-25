@@ -133,6 +133,12 @@ sub BUILD {
 Where the B<duration> is a note length like C<$tabla-E<gt>eighth> (or
 C<'en'> in MIDI-Perl notation).
 
+Each bol can be 1 or more patch numbers. For bols with more than one
+patch possibility, calling that method with either no B<index> or an
+B<index> of C<-1> will play one of the patches at random. You can of
+course, also call the method with a known patch B<index> to get only
+that patch.
+
 Default patches:
 
   dhun: 67 80
