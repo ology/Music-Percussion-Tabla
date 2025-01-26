@@ -41,37 +41,37 @@ drum sounds and the included soundfont file (which is B<4.1MB>).
 
 Here are my "non-tabla player" descriptions of the sounds:
 
-   # MIDI Bol  - Description
+   # MIDI Description
   ...
-   1  60  tin  - ringing mid
-   2  61  ti   - muted low
-   3  62  ?    - slap
-   4  63  tin  - ringing mid slap
-   5  64  ke   - low knock
-   6  65  ga   - muted ringing low
-   7  66  ge   - lower
-   8  67  ?    - low-up
-   9  68  ti   - muted slap
-  10  69  ?    - ringing low
-  11  70  ti   - flam slap
-  12  71  ta   - loud tap
-  13  72  ti   - lowest mute
-  14  73  tun  - ringing low
-  15  74  ?    - muted low
-  16  75  ta   - loud tap double
-  17  76  ge   - high-low
-  18  77  ke   - high slap
-  19  78  na   - tap
-  20  79  ?    - high knock
-  21  80  ?    - short low-up
-  22  81  na   - mid tap
-  23  82  ti   - muted tap
-  24  83  tin  - mid
-  25  84  ?    - muted
-  26  85  ta   - loud mid double
-  27  86  ti   - slightly more muted
-  28  87  tin  - low mid
-  29  88  tun  - ringing mid
+   1  60  ringing mid
+   2  61  muted low
+   3  62  slap
+   4  63  ringing mid slap
+   5  64  low knock
+   6  65  muted ringing low
+   7  66  lower
+   8  67  low-up
+   9  68  muted slap
+  10  69  ringing low
+  11  70  flam slap
+  12  71  loud tap
+  13  72  lowest mute
+  14  73  ringing low
+  15  74  muted low
+  16  75  loud tap double
+  17  76  high-low
+  18  77  high slap
+  19  78  tap
+  20  79  high knock
+  21  80  short low-up
+  22  81  mid tap
+  23  82  muted tap
+  24  83  mid
+  25  84  muted
+  26  85  loud mid double
+  27  86  slightly more muted
+  28  87  low mid
+  29  88  ringing mid
   ...
 
 To play patches by number (for the unknown bols, for instance), do
