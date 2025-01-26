@@ -28,9 +28,14 @@ extends 'MIDI::Drummer::Tiny';
     $t->strike('ge');
     $t->rest($t->quarter);
   }
+
   $t->double_strike('dha', $t->quarter);
 
-  $t->teentaal for 1 .. $t->bars;
+  $t->teentaal($t->eighth) for 1 .. $t->bars;
+  $t->keherawa($t->eighth) for 1 .. $t->bars;
+  $t->jhaptaal($t->eighth) for 1 .. $t->bars;
+  $t->dadra($t->eighth) for 1 .. $t->bars;
+  $t->rupaktaal($t->eighth) for 1 .. $t->bars;
 
   $t->play_with_timidity;
   # OR:
@@ -231,6 +236,14 @@ sub double_strike {
 
 =item teentaal([$duration])
 
+=item keherawa([$duration])
+
+=item jhaptaal([$duration])
+
+=item dadra([$duration])
+
+=item rupaktaal([$duration])
+
 =back
 
 =cut
@@ -245,13 +258,64 @@ sub teentaal {
         $self->double_strike('dha', $dura);
     }
     $self->double_strike('dha', $dura);
-    $self->strike('tin');
-    $self->strike('tin');
-    $self->strike('ta');
-    $self->strike('ta');
+    $self->strike('tin', $dura);
+    $self->strike('tin', $dura);
+    $self->strike('ta', $dura);
+    $self->strike('ta', $dura);
     $self->double_strike('dhin', $dura);
     $self->double_strike('dhin', $dura);
     $self->double_strike('dha', $dura);
+}
+
+sub keherawa {
+    my ($self, $dura) = @_;
+    $dura ||= $self->quarter;
+    $self->double_strike('dha', $dura);
+    $self->strike('ge', $dura);
+    $self->strike('na', $dura);
+    $self->strike('tin', $dura);
+    $self->strike('na', $dura);
+    $self->strike('ke', $dura);
+    $self->double_strike('dhin', $dura);
+    $self->strike('na', $dura);
+}
+
+sub jhaptaal {
+    my ($self, $dura) = @_;
+    $dura ||= $self->quarter;
+    $self->double_strike('dhin', $dura);
+    $self->strike('na', $dura);
+    $self->double_strike('dhin', $dura);
+    $self->double_strike('dhin', $dura);
+    $self->strike('na', $dura);
+    $self->strike('tin', $dura);
+    $self->strike('na', $dura);
+    $self->double_strike('dhin', $dura);
+    $self->double_strike('dhin', $dura);
+    $self->strike('na', $dura);
+}
+
+sub dadra {
+    my ($self, $dura) = @_;
+    $dura ||= $self->quarter;
+    $self->double_strike('dha', $dura);
+    $self->double_strike('dhin', $dura);
+    $self->strike('na', $dura);
+    $self->double_strike('dha', $dura);
+    $self->strike('ti', $dura);
+    $self->strike('na', $dura);
+}
+
+sub rupaktaal {
+    my ($self, $dura) = @_;
+    $dura ||= $self->quarter;
+    $self->strike('tin', $dura);
+    $self->strike('tin', $dura);
+    $self->strike('na', $dura);
+    $self->double_strike('dhin', $dura);
+    $self->strike('na', $dura);
+    $self->double_strike('dhin', $dura);
+    $self->strike('na', $dura);
 }
 
 1;
