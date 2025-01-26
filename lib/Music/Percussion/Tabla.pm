@@ -198,10 +198,10 @@ Double strike bols:
 Play a double-strike on the B<baya> and B<daya> drums for the given
 B<bol> and B<duration>.
 
-Patches given for double-strikes will be ignored. That is, if the
-individual bols comprising the double-strike have more than one
-possible patch, one is chosen at random. If specific patches are
-desired, use the C<note> method with multiple patches.
+Patches given for double-strikes will be ignored. That is, each of the
+individual bols comprising the double-strike are chosen at random. If
+specific patches are desired, use the C<note> method with multiple
+patches.
 
 =cut
 
@@ -321,6 +321,8 @@ The F<t/01-methods.t> and F<eg/*> programs in this distribution.
 L<Moo>
 
 L<File::ShareDir>
+
+L<List::Util>
 
 L<https://gleitz.github.io/midi-js-soundfonts/Tabla/Tabla.sf2> (4.1MB)
 
