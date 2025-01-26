@@ -48,7 +48,7 @@ Here are my "non-tabla player" descriptions of the sounds:
    3  62  ?    - slap
    4  63  tin  - ringing mid slap
    5  64  ke   - low knock
-   6  65  ge   - muted ringing low
+   6  65  ga   - muted ringing low
    7  66  ge   - lower
    8  67  dhun - low-up
    9  68  ti   - muted slap
@@ -71,7 +71,7 @@ Here are my "non-tabla player" descriptions of the sounds:
   26  85  ta   - loud mid double
   27  86  ti   - slightly more muted
   28  87  tin  - low mid
-  29  88  ta   - ringing mid
+  29  88  tun  - ringing mid
   ...
 
 To play patches by number (for the unknown bols, for instance), do
