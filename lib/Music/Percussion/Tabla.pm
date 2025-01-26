@@ -225,6 +225,8 @@ sub strike {
 
 =head2 thekas
 
+Traditional "groove patterns":
+
 =over
 
 =item teentaal([$duration])
