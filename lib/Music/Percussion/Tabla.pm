@@ -28,6 +28,7 @@ extends 'MIDI::Drummer::Tiny';
     $t->strike('ge');
     $t->rest($t->quarter);
   }
+  $t->dha($t->quarter, 65, 61);
 
   $t->play_with_timidity;
   # OR:
@@ -114,14 +115,14 @@ Each bol can be 1 or more patch numbers.
 
 Default bol patches:
 
-  dhun: 67 80
-  ge:   65 66 76
+  ga:   65
+  ge:   66 76
   ke:   64 77 79
   na:   78 81
-  ta:   71 75 85 88
+  ta:   71 75 85
   ti:   61 68 70 72 82 86
   tin:  60 63 83 87
-  tun:  73
+  tun:  88
 
 =cut
 
@@ -129,14 +130,20 @@ has patches => (
     is      => 'ro',
     default => sub {
         {
-            dhun => [qw(67 80)],
-            ge   => [qw(65 66 76)],
+            # single strikes
+            ga   => [qw(65)],
+            ge   => [qw(66 76)],
             ke   => [qw(64 77 79)],
             na   => [qw(78 81)],
-            ta   => [qw(71 75 85 88)],
+            ta   => [qw(71 75 85)],
             ti   => [qw(61 68 70 72 82 86)],
             tin  => [qw(60 63 83 87)],
-            tun  => [qw(73)],
+            tun  => [qw(88)],
+            # double strikes
+            dha  => [qw(ge ta)],
+            dhin => [qw(ge tin)],
+            dhit => [qw(ge ti)],
+            dhun => [qw(ge tun)],
         }
     },
 );
@@ -161,13 +168,13 @@ sub BUILD {
 
 =head2 strike
 
-  $tabla->strike('dhun');
-  $tabla->strike('ge', $duration);
-  $tabla->strike('ti', $duration, $patch);
+  $tabla->strike($bol);
+  $tabla->strike($bol, $duration);
+  $tabla->strike($bol, $duration, $patch);
 
-Bols:
+Single strike bols:
 
-  dhun, ge, ke, na, ta, ti, tin, tun
+  ga, ge, ke, na, ta, ti, tin, tun
 
 The B<duration> is a note length like C<$tabla-E<gt>eighth> (or
 C<'en'> in MIDI-Perl notation).
@@ -185,6 +192,33 @@ sub strike {
     $patch = $patches->[ int rand @$patches ]
         if $patches && (!defined $patch || $patch < 0);
     $self->note($dura, $patch);
+}
+
+=head2 double_strike
+
+  $tabla->double_strike($bol);
+  $tabla->double_strike($bol, $duration);
+
+Double strike bols:
+
+  dha, dhin, dhit, dhun
+
+Play a double-strike on the B<baya> and B<daya> drums for the given
+B<bol> and B<duration>.
+
+=cut
+
+sub double_strike {
+  my ($self, $bol, $dura, $baya, $daya) = @_;
+    $dura ||= $self->quarter;
+    my $bols = $self->patches->{$bol};
+    my $patches = $self->patches->{ $bols->[0] };
+    $baya = $patches->[ int rand @$patches ]
+        if $patches && (!defined $baya || $baya < 0);
+    $patches = $self->patches->{ $bols->[1] };
+    $daya = $patches->[ int rand @$patches ]
+        if $patches && (!defined $daya || $daya < 0);
+    $self->note($dura, $baya, $daya);
 }
 
 1;
