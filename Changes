@@ -1,6 +1,7 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Simplified things by having the strike() method handle double-strikes.
 
 0.0600 2025-01-26 13:32:54
     - Add thekas (groove patterns).
