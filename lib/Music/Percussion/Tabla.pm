@@ -30,6 +30,8 @@ extends 'MIDI::Drummer::Tiny';
   }
   $t->double_strike('dha', $t->quarter);
 
+  $t->teentaal for 1 .. $t->bars;
+
   $t->play_with_timidity;
   # OR:
   $t->write; # save the score as a MIDI file
@@ -221,6 +223,35 @@ sub double_strike {
     $patches = $self->patches->{ $bols->[1] };
     my $daya = $patches->[ int rand @$patches ];
     $self->note($dura, $baya, $daya);
+}
+
+=head2 thekas
+
+=over
+
+=item teentaal([$duration])
+
+=back
+
+=cut
+
+sub teentaal {
+    my ($self, $dura) = @_;
+    $dura ||= $self->quarter;
+    for (1 .. 2) {
+        $self->double_strike('dha', $dura);
+        $self->double_strike('dhin', $dura);
+        $self->double_strike('dhin', $dura);
+        $self->double_strike('dha', $dura);
+    }
+    $self->double_strike('dha', $dura);
+    $self->strike('tin');
+    $self->strike('tin');
+    $self->strike('ta');
+    $self->strike('ta');
+    $self->double_strike('dhin', $dura);
+    $self->double_strike('dhin', $dura);
+    $self->double_strike('dha', $dura);
 }
 
 1;
