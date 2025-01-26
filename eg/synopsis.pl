@@ -8,7 +8,7 @@ my $t = Music::Percussion::Tabla->new;
 
 # $t->timidity_cfg('/tmp/timidity.cfg'); # optional
 
-print $t->soundfont, "\n";
+# print $t->soundfont, "\n";
 
 for (1 .. $t->bars) {
   $t->strike('ta', $t->eighth);
