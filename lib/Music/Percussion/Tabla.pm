@@ -2,7 +2,7 @@ package Music::Percussion::Tabla;
 
 # ABSTRACT: Play the tabla!
 
-our $VERSION = '0.0500';
+our $VERSION = '0.0501';
 
 use Moo;
 use File::ShareDir qw(dist_dir);
@@ -50,7 +50,7 @@ Here are my "non-tabla player" descriptions of the sounds:
    5  64  ke   - low knock
    6  65  ga   - muted ringing low
    7  66  ge   - lower
-   8  67  dhun - low-up
+   8  67  ?    - low-up
    9  68  ti   - muted slap
   10  69  ?    - ringing low
   11  70  ti   - flam slap
@@ -63,7 +63,7 @@ Here are my "non-tabla player" descriptions of the sounds:
   18  77  ke   - high slap
   19  78  na   - tap
   20  79  ?    - high knock
-  21  80  dhun - short low-up
+  21  80  ?    - short low-up
   22  81  na   - mid tap
   23  82  ti   - muted tap
   24  83  tin  - mid
