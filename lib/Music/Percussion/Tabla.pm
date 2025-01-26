@@ -6,6 +6,7 @@ our $VERSION = '0.0600';
 
 use Moo;
 use File::ShareDir qw(dist_dir);
+use List::Util qw(any);
 use strictures 2;
 use namespace::clean;
 
@@ -29,7 +30,7 @@ extends 'MIDI::Drummer::Tiny';
     $t->rest($t->quarter);
   }
 
-  $t->double_strike('dha', $t->quarter);
+  $t->strike('dha', $t->quarter);
 
   $t->teentaal($t->eighth) for 1 .. $t->bars;
   $t->keherawa($t->eighth) for 1 .. $t->bars;
@@ -190,22 +191,6 @@ Each bol can be 1 or more patch numbers. For bols with more than one
 patch possibility, calling that method with either no B<patch> or a
 B<patch> of C<-1> will play one of the patches at random.
 
-=cut
-
-sub strike {
-    my ($self, $bol, $dura, $patch) = @_;
-    $dura ||= $self->quarter;
-    my $patches = $self->patches->{$bol};
-    $patch = $patches->[ int rand @$patches ]
-        if $patches && (!defined $patch || $patch < 0);
-    $self->note($dura, $patch);
-}
-
-=head2 double_strike
-
-  $tabla->double_strike($bol);
-  $tabla->double_strike($bol, $duration);
-
 Double strike bols:
 
   dha, dhin, dhit, dhun
@@ -213,21 +198,29 @@ Double strike bols:
 Play a double-strike on the B<baya> and B<daya> drums for the given
 B<bol> and B<duration>.
 
-If the individual bols comprising the double-strike have more than one
+Patches given for double-strikes will be ignored. That is, if the
+individual bols comprising the double-strike have more than one
 possible patch, one is chosen at random. If specific patches are
 desired, use the C<note> method with multiple patches.
 
 =cut
 
-sub double_strike {
-  my ($self, $bol, $dura) = @_;
+sub strike {
+    my ($self, $bol, $dura, $patch) = @_;
     $dura ||= $self->quarter;
     my $bols = $self->patches->{$bol};
-    my $patches = $self->patches->{ $bols->[0] };
-    my $baya = $patches->[ int rand @$patches ];
-    $patches = $self->patches->{ $bols->[1] };
-    my $daya = $patches->[ int rand @$patches ];
-    $self->note($dura, $baya, $daya);
+    if (any { /[a-z]/ } @$bols) { # double-strike
+        my $patches = $self->patches->{ $bols->[0] };
+        my $baya = $patches->[ int rand @$patches ];
+        $patches = $self->patches->{ $bols->[1] };
+        my $daya = $patches->[ int rand @$patches ];
+        $self->note($dura, $baya, $daya);
+    }
+    else { # single-strike
+        $patch = $bols->[ int rand @$bols ]
+            if $bols && (!defined $patch || $patch < 0);
+        $self->note($dura, $patch);
+    }
 }
 
 =head2 thekas
@@ -252,56 +245,56 @@ sub teentaal {
     my ($self, $dura) = @_;
     $dura ||= $self->quarter;
     for (1 .. 2) {
-        $self->double_strike('dha', $dura);
-        $self->double_strike('dhin', $dura);
-        $self->double_strike('dhin', $dura);
-        $self->double_strike('dha', $dura);
+        $self->strike('dha', $dura);
+        $self->strike('dhin', $dura);
+        $self->strike('dhin', $dura);
+        $self->strike('dha', $dura);
     }
-    $self->double_strike('dha', $dura);
+    $self->strike('dha', $dura);
     $self->strike('tin', $dura);
     $self->strike('tin', $dura);
     $self->strike('ta', $dura);
     $self->strike('ta', $dura);
-    $self->double_strike('dhin', $dura);
-    $self->double_strike('dhin', $dura);
-    $self->double_strike('dha', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('dha', $dura);
 }
 
 sub keherawa {
     my ($self, $dura) = @_;
     $dura ||= $self->quarter;
-    $self->double_strike('dha', $dura);
+    $self->strike('dha', $dura);
     $self->strike('ge', $dura);
     $self->strike('na', $dura);
     $self->strike('tin', $dura);
     $self->strike('na', $dura);
     $self->strike('ke', $dura);
-    $self->double_strike('dhin', $dura);
+    $self->strike('dhin', $dura);
     $self->strike('na', $dura);
 }
 
 sub jhaptaal {
     my ($self, $dura) = @_;
     $dura ||= $self->quarter;
-    $self->double_strike('dhin', $dura);
+    $self->strike('dhin', $dura);
     $self->strike('na', $dura);
-    $self->double_strike('dhin', $dura);
-    $self->double_strike('dhin', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('dhin', $dura);
     $self->strike('na', $dura);
     $self->strike('tin', $dura);
     $self->strike('na', $dura);
-    $self->double_strike('dhin', $dura);
-    $self->double_strike('dhin', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('dhin', $dura);
     $self->strike('na', $dura);
 }
 
 sub dadra {
     my ($self, $dura) = @_;
     $dura ||= $self->quarter;
-    $self->double_strike('dha', $dura);
-    $self->double_strike('dhin', $dura);
+    $self->strike('dha', $dura);
+    $self->strike('dhin', $dura);
     $self->strike('na', $dura);
-    $self->double_strike('dha', $dura);
+    $self->strike('dha', $dura);
     $self->strike('ti', $dura);
     $self->strike('na', $dura);
 }
@@ -312,9 +305,9 @@ sub rupaktaal {
     $self->strike('tin', $dura);
     $self->strike('tin', $dura);
     $self->strike('na', $dura);
-    $self->double_strike('dhin', $dura);
+    $self->strike('dhin', $dura);
     $self->strike('na', $dura);
-    $self->double_strike('dhin', $dura);
+    $self->strike('dhin', $dura);
     $self->strike('na', $dura);
 }
 
