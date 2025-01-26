@@ -1,6 +1,8 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Add the double_strike() method.
+    - Attempt to correct a couple bol patches.
 
 0.0405 2025-01-25 23:37:55
     - Strike with a patch not with the index of a patch.
