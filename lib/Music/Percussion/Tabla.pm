@@ -28,7 +28,7 @@ extends 'MIDI::Drummer::Tiny';
     $t->strike('ge');
     $t->rest($t->quarter);
   }
-  $t->dha($t->quarter, 65, 61);
+  $t->double_strike('dha', $t->quarter);
 
   $t->play_with_timidity;
   # OR:
@@ -206,18 +206,20 @@ Double strike bols:
 Play a double-strike on the B<baya> and B<daya> drums for the given
 B<bol> and B<duration>.
 
+If the idividual bols comprising the double-strike have more than one
+possible patch, one is chosen at random. If specific patches are
+desired, use the C<note> method with multiple patches.
+
 =cut
 
 sub double_strike {
-  my ($self, $bol, $dura, $baya, $daya) = @_;
+  my ($self, $bol, $dura) = @_;
     $dura ||= $self->quarter;
     my $bols = $self->patches->{$bol};
     my $patches = $self->patches->{ $bols->[0] };
-    $baya = $patches->[ int rand @$patches ]
-        if $patches && (!defined $baya || $baya < 0);
+    my $baya = $patches->[ int rand @$patches ];
     $patches = $self->patches->{ $bols->[1] };
-    $daya = $patches->[ int rand @$patches ]
-        if $patches && (!defined $daya || $daya < 0);
+    my $daya = $patches->[ int rand @$patches ];
     $self->note($dura, $baya, $daya);
 }
 
