@@ -206,7 +206,7 @@ Double strike bols:
 Play a double-strike on the B<baya> and B<daya> drums for the given
 B<bol> and B<duration>.
 
-If the idividual bols comprising the double-strike have more than one
+If the individual bols comprising the double-strike have more than one
 possible patch, one is chosen at random. If specific patches are
 desired, use the C<note> method with multiple patches.
 
