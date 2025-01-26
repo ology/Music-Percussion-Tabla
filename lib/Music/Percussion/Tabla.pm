@@ -2,7 +2,7 @@ package Music::Percussion::Tabla;
 
 # ABSTRACT: Play the tabla!
 
-our $VERSION = '0.0404';
+our $VERSION = '0.0405';
 
 use Moo;
 use File::ShareDir qw(dist_dir);
