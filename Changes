@@ -1,6 +1,7 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Add thekas (groove patterns).
 
 0.0502 2025-01-26 12:55:07
     - Fix the double_strike() method logic.
