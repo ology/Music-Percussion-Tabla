@@ -163,7 +163,7 @@ sub BUILD {
 
   $tabla->strike('dhun');
   $tabla->strike('ge', $duration);
-  $tabla->strike('ti', $duration, $index);
+  $tabla->strike('ti', $duration, $patch);
 
 Bols:
 
@@ -173,19 +173,17 @@ The B<duration> is a note length like C<$tabla-E<gt>eighth> (or
 C<'en'> in MIDI-Perl notation).
 
 Each bol can be 1 or more patch numbers. For bols with more than one
-patch possibility, calling that method with either no B<index> or an
-B<index> of C<-1> will play one of the patches at random. You can of
-course, also call the method with a known patch B<index> to get only
-that patch.
+patch possibility, calling that method with either no B<patch> or a
+B<patch> of C<-1> will play one of the patches at random.
 
 =cut
 
 sub strike {
-    my ($self, $bol, $dura, $index) = @_;
+    my ($self, $bol, $dura, $patch) = @_;
     $dura ||= $self->quarter;
     my $patches = $self->patches->{$bol};
-    $index = int rand @$patches if $patches && (!defined $index || $index < 0);
-    my $patch = $patches->[$index] || 60;
+    $patch = $patches->[ int rand @$patches ]
+        if $patches && (!defined $patch || $patch < 0);
     $self->note($dura, $patch);
 }
 
