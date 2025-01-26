@@ -82,8 +82,8 @@ Here are my "non-tabla player" descriptions of the sounds:
   29  88  ringing mid
   ...
 
-To play patches by number (for the unknown bols, for instance), do
-this to add to the C<84>th MIDInum entry score:
+To play patches by number (e.g. for unknown bols), do this to add the
+C<84>th MIDInum entry score:
 
   $tabla->note($tabla->eighth, 84);
 
