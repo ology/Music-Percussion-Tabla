@@ -1,6 +1,7 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Strike with a patch not with the index of a patch.
 
 0.0404 2025-01-25 14:12:24
     - Improve documentation.
