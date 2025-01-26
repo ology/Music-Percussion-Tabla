@@ -17,7 +17,8 @@ for (1 .. $t->bars) {
     $t->strike('ge');
     $t->rest($t->quarter);
 }
-$t->double_strike('dha', $t->quarter);
+
+$t->strike('dha', $t->quarter);
 
 $t->teentaal($t->eighth) for 1 .. $t->bars;
 $t->keherawa($t->eighth) for 1 .. $t->bars;
