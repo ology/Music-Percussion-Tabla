@@ -2,6 +2,7 @@ Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
     - Fix the double_strike() method logic.
+    - Improve documentation.
 
 0.0501 2025-01-26 12:36:14
     - Fix bol patches again.
