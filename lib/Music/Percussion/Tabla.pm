@@ -36,8 +36,8 @@ extends 'MIDI::Drummer::Tiny';
 
   $t->play_with_timidity;
   # OR:
-  $t->timidity_cfg('/Users/you/timidity.cfg');
   $t->write; # save the score as a MIDI file
+  $t->timidity_cfg('/Users/you/timidity.cfg');
   # then run timidity with that config and MIDI file
 
 =head1 DESCRIPTION
