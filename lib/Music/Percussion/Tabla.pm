@@ -178,7 +178,7 @@ sub BUILD {
 
 This method handles two types of strikes: single and double.
 
-A named B<bol> can have one or more patches associated with it. For
+A named B<bol> can have one or more B<patches> associated with it. For
 single strikes, calling with a specific B<patch> will play that patch,
 of course. Calling the method with either no B<patch> or a B<patch> of
 C<-1> will play one of the B<bol> patches at random.
