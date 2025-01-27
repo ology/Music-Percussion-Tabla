@@ -178,7 +178,8 @@ sub BUILD {
 
 This method handles two types of strikes: single and double.
 
-Each B<bol> can have one or more B<patch> numbers associated with it.
+Each named B<bol> can have one or more B<patch> numbers associated
+with it.
 
 The B<duration> is a note length like C<$tabla-E<gt>eighth> (or
 C<'en'> in MIDI-Perl notation).
