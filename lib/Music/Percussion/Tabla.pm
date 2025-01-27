@@ -26,6 +26,13 @@ extends 'MIDI::Drummer::Tiny';
     $t->rest($t->quarter);
   }
 
+  for (1 .. 2) {
+    $t->strike('ke', $t->sixteenth) for 1 .. 3;
+    $t->strike('ti', $t->sixteenth) for 1 .. 4;
+  }
+
+  $t->rest($t->quarter);
+
   $t->teentaal($t->eighth)  for 1 .. $t->bars;
   $t->keherawa($t->eighth)  for 1 .. $t->bars;
   $t->jhaptaal($t->eighth)  for 1 .. $t->bars;
