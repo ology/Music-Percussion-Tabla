@@ -211,7 +211,7 @@ patches.
 =cut
 
 sub strike {
-    my ($self, $bol, $dura, $patch) = @_;
+    my ($self, $bol, $dura) = @_;
     $dura ||= $self->quarter;
     my $bols = $self->patches->{$bol};
     if (any { /[a-z]/ } @$bols) { # double-strike
@@ -222,8 +222,7 @@ sub strike {
         $self->note($dura, $baya, $daya);
     }
     else { # single-strike
-        $patch = $bols->[ int rand @$bols ]
-            if $bols && (!defined $patch || $patch < 0);
+        my $patch = $bols->[ int rand @$bols ];
         $self->note($dura, $patch);
     }
 }
