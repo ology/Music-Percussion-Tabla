@@ -18,10 +18,6 @@ extends 'MIDI::Drummer::Tiny';
 
   my $t = Music::Percussion::Tabla->new;
 
-  $t->timidity_cfg('/tmp/timidity.cfg'); # optional
-
-  say $t->soundfont;
-
   for (1 .. $t->bars) {
     $t->strike('ta', $t->eighth);
     $t->strike('ta', $t->eighth);
@@ -40,7 +36,9 @@ extends 'MIDI::Drummer::Tiny';
 
   $t->play_with_timidity;
   # OR:
+  $t->timidity_cfg('/Users/you/timidity.cfg');
   $t->write; # save the score as a MIDI file
+  # then run timidity with that config and MIDI file
 
 =head1 DESCRIPTION
 
