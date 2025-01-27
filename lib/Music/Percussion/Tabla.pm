@@ -28,10 +28,10 @@ extends 'MIDI::Drummer::Tiny';
 
   $t->strike('dha', $t->quarter);
 
-  $t->teentaal($t->eighth) for 1 .. $t->bars;
-  $t->keherawa($t->eighth) for 1 .. $t->bars;
-  $t->jhaptaal($t->eighth) for 1 .. $t->bars;
-  $t->dadra($t->eighth) for 1 .. $t->bars;
+  $t->teentaal($t->eighth)  for 1 .. $t->bars;
+  $t->keherawa($t->eighth)  for 1 .. $t->bars;
+  $t->jhaptaal($t->eighth)  for 1 .. $t->bars;
+  $t->dadra($t->eighth)     for 1 .. $t->bars;
   $t->rupaktaal($t->eighth) for 1 .. $t->bars;
 
   $t->play_with_timidity;
