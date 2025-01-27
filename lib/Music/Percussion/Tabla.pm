@@ -179,10 +179,8 @@ sub BUILD {
 This method handles two types of strikes: single and double.
 
 A named B<bol> can have one or more B<patch> numbers associated with
-it.
-
-For single strikes, calling with a specific B<patch> will play that
-patch, of course. Calling the method with either no B<patch> or a
+it. For single strikes, calling with a specific B<patch> will play
+that patch, of course. Calling the method with either no B<patch> or a
 B<patch> of C<-1> will play one of the B<bol> patches at random.
 
 The B<duration> is a note length like C<$tabla-E<gt>eighth> (or
