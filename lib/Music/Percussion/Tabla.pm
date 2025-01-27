@@ -176,18 +176,22 @@ sub BUILD {
   $tabla->strike($bol, $duration);
   $tabla->strike($bol, $duration, $patch);
 
-Single strike bols:
+This method handles two types of strikes: single and double.
 
-  ga, ge, ke, na, ta, ti, tin, tun
+Each B<bol> can have one or more B<patch> numbers associated with it.
 
 The B<duration> is a note length like C<$tabla-E<gt>eighth> (or
 C<'en'> in MIDI-Perl notation).
 
-Each bol can be 1 or more patch numbers. For bols with more than one
-patch possibility, calling that method with either no B<patch> or a
-B<patch> of C<-1> will play one of the patches at random.
+1. Single strike bols:
 
-Double strike bols:
+  ga, ge, ke, na, ta, ti, tin, tun
+
+Calling with a specific B<patch> will play that patch, of course.
+Calling the method with either no B<patch> or a B<patch> of C<-1> will
+play one of the B<bol> patches at random.
+
+2. Double strike bols:
 
   dha, dhin, dhit, dhun
 
