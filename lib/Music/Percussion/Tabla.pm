@@ -191,8 +191,8 @@ Double strike bols:
 
   dha, dhin, dhit, dhun
 
-Play a double-strike on the B<baya> and B<daya> drums for the given
-B<bol> and B<duration>.
+Play a double-strike on the baya and daya drums for the given B<bol>
+and B<duration>.
 
 Patches given for double-strikes will be ignored. That is, each of the
 individual bols comprising the double-strike are chosen at random. If
