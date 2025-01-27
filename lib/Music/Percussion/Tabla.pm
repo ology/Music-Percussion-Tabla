@@ -205,8 +205,7 @@ B<bol> and B<duration>.
 Each of the individual bol patches, comprising the double-strike, are
 chosen at random, as with the single-strike.
 
-If specific patches are desired, use the C<note> method with multiple
-patches.
+If specific patches are desired, use the C<note> method, as shown above.
 
 =cut
 
