@@ -117,7 +117,7 @@ sub _build_soundfont {
 
 Each bol can be 1 or more patch numbers.
 
-Default bol patches:
+Default single strike bol patches:
 
   ga:   65
   ge:   66 76
@@ -127,6 +127,13 @@ Default bol patches:
   ti:   61 68 70 72 82 86
   tin:  60 63 83 87
   tun:  88
+
+Default double strike bols:
+
+  dha:  ge ta
+  dhin: ge tin
+  dhit: ge ti
+  dhun: ge tun
 
 =cut
 
