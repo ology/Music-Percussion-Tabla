@@ -194,8 +194,8 @@ C<'en'> in MIDI-Perl notation).
 
   dha, dhin, dhit, dhun
 
-Play a double-strike on the baya and daya drums for the given B<bol>
-and B<duration>.
+For a double strike, play on both the baya and daya drums for the
+given B<bol> and B<duration>.
 
 Patches given for double-strikes will be ignored. That is, each of the
 individual bols comprising the double-strike are chosen at random. If
