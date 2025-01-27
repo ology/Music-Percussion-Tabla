@@ -181,14 +181,12 @@ sub BUILD {
 
   $tabla->strike($bol);
   $tabla->strike($bol, $duration);
-  $tabla->strike($bol, $duration, $patch);
 
 This method handles two types of strikes: single and double.
 
 A named B<bol> can have one or more B<patches> associated with it. For
-single strikes, calling with a specific B<patch> will play that patch,
-of course. Calling the method with either no B<patch> or a B<patch> of
-C<-1> will play one of the B<bol> patches at random.
+single strikes, the method will play one of the B<bol> patches at
+random.
 
 The B<duration> is a note length like C<$tabla-E<gt>eighth> (or
 C<'en'> in MIDI-Perl notation).
@@ -201,12 +199,13 @@ C<'en'> in MIDI-Perl notation).
 
   dha, dhin, dhit, dhun
 
-For a double strike, play on both the baya and daya drums for the
-given B<bol> and B<duration>.
+For a double strike, play both the baya and daya drums for the given
+B<bol> and B<duration>.
 
-Patches given for double-strikes will be ignored. That is, each of the
-individual bols comprising the double-strike are chosen at random. If
-specific patches are desired, use the C<note> method with multiple
+Each of the individual bol patches, comprising the double-strike, are
+chosen at random, as with the single-strike.
+
+If specific patches are desired, use the C<note> method with multiple
 patches.
 
 =cut
