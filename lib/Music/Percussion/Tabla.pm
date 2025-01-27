@@ -21,12 +21,10 @@ extends 'MIDI::Drummer::Tiny';
   for (1 .. $t->bars) {
     $t->strike('ta', $t->eighth);
     $t->strike('ta', $t->eighth);
-    $t->strike('tun');
+    $t->strike('dha');
     $t->strike('ge');
     $t->rest($t->quarter);
   }
-
-  $t->strike('dha', $t->quarter);
 
   $t->teentaal($t->eighth)  for 1 .. $t->bars;
   $t->keherawa($t->eighth)  for 1 .. $t->bars;
