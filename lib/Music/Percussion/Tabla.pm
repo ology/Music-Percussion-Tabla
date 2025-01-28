@@ -238,7 +238,12 @@ sub strike {
     }
     else { # single-strike
         my $patch = $bols->[ int rand @$bols ];
-        $self->note($dura, $patch);
+        if ($return) {
+            return [ $patch ];
+        }
+        else {
+            $self->note($dura, $patch);
+        }
     }
 }
 
