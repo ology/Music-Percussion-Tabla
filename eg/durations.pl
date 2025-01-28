@@ -27,5 +27,3 @@ for my $i (1 .. $t->bars) {
 }
 
 $t->play_with_timidity;
-# $t->write;
-# $t->timidity_cfg('/Users/you/timidity.cfg');
