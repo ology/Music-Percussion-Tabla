@@ -3,12 +3,13 @@ use strict;
 use warnings;
 
 use Music::Duration::Partition ();
-use Music::Percussion::Tabla ();
+use Music::Percussion::Tabla (bars => 8);
 
 my $mdp = Music::Duration::Partition->new(
-  size   => 5,
-  pool   => [qw(qn den en dsn sn)],
-  groups => [qw( 1   1  2   1  2)],
+  size    => 5,
+  pool    => [qw(qn den en dsn sn)],
+  weights => [qw( 2   1  2   1  2)],
+  groups  => [qw( 1   1  2   1  2)],
 );
 
 my $motif = $mdp->motif;
