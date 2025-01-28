@@ -296,7 +296,7 @@ sub teentaal {
     $patch{ $i++ } = $self->strike('dhin', $dura, $return);
     $patch{ $i++ } = $self->strike('dhin', $dura, $return);
     $patch{ $i++ } = $self->strike('dha', $dura, $return);
-    return [ map { $patch{$_} } sort { $a <=> $b } keys %patch ];
+    return [ map { @{ $patch{$_} } } sort { $a <=> $b } keys %patch ];
 }
 
 sub keherawa {
@@ -312,7 +312,7 @@ sub keherawa {
     $patch{ $i++ } = $self->strike('ke', $dura, $return);
     $patch{ $i++ } = $self->strike('dhin', $dura, $return);
     $patch{ $i++ } = $self->strike('na', $dura, $return);
-    return [ map { $patch{$_} } sort { $a <=> $b } keys %patch ];
+    return [ map { @{ $patch{$_} } } sort { $a <=> $b } keys %patch ];
 }
 
 sub jhaptaal {
@@ -330,7 +330,7 @@ sub jhaptaal {
     $patch{ $i++ } = $self->strike('dhin', $dura, $return);
     $patch{ $i++ } = $self->strike('dhin', $dura, $return);
     $patch{ $i++ } = $self->strike('na', $dura, $return);
-    return [ map { $patch{$_} } sort { $a <=> $b } keys %patch ];
+    return [ map { @{ $patch{$_} } } sort { $a <=> $b } keys %patch ];
 }
 
 sub dadra {
@@ -344,7 +344,7 @@ sub dadra {
     $patch{ $i++ } = $self->strike('dha', $dura, $return);
     $patch{ $i++ } = $self->strike('ti', $dura, $return);
     $patch{ $i++ } = $self->strike('na', $dura, $return);
-    return [ map { $patch{$_} } sort { $a <=> $b } keys %patch ];
+    return [ map { @{ $patch{$_} } } sort { $a <=> $b } keys %patch ];
 }
 
 sub rupaktaal {
@@ -359,7 +359,7 @@ sub rupaktaal {
     $patch{ $i++ } = $self->strike('na', $dura, $return);
     $patch{ $i++ } = $self->strike('dhin', $dura, $return);
     $patch{ $i++ } = $self->strike('na', $dura, $return);
-    return [ map { $patch{$_} } sort { $a <=> $b } keys %patch ];
+    return [ map { @{ $patch{$_} } } sort { $a <=> $b } keys %patch ];
 }
 
 1;
