@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 use Music::Duration::Partition ();
-use Music::Percussion::Tabla (bars => 8);
+use Music::Percussion::Tabla ();
 
 my $mdp = Music::Duration::Partition->new(
   size    => 5,
@@ -14,7 +14,7 @@ my $mdp = Music::Duration::Partition->new(
 
 my $motif = $mdp->motif;
 
-my $t = Music::Percussion::Tabla->new;
+my $t = Music::Percussion::Tabla->new(bars => 8);
 
 my @bols = keys $t->patches->%*;
 
@@ -23,6 +23,7 @@ for my $i (1 .. $t->bars) {
     my $bol = $bols[ int rand @bols ];
     $t->strike($bol, $dura);
   }
+  $t->rest($t->half);
 }
 
 $t->play_with_timidity;
