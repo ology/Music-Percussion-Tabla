@@ -187,7 +187,7 @@ sub BUILD {
 =head2 strike
 
   $tabla->strike($bol);
-  $tabla->strike($bol, $duration);
+  $tabla->strike($bol, $duration, $return);
 
 This method handles two types of strikes: single and double.
 
@@ -197,6 +197,9 @@ random.
 
 The B<duration> is a note length like C<$tabla-E<gt>eighth> (or
 C<'en'> in MIDI-Perl notation).
+
+If true, the B<return> flag will return the chosen B<bol> patch
+instead of adding it as a C<note> to the score.
 
 (If specific patches are desired, use the C<note> method, as shown
 above.)
@@ -218,7 +221,7 @@ chosen at random, as with the single-strike.
 =cut
 
 sub strike {
-    my ($self, $bol, $dura) = @_;
+    my ($self, $bol, $dura, $return) = @_;
     $dura ||= $self->quarter;
     my $bols = $self->patches->{$bol};
     if (any { /[a-z]/ } @$bols) { # double-strike
@@ -226,7 +229,12 @@ sub strike {
         my $baya = $patches->[ int rand @$patches ];
         $patches = $self->patches->{ $bols->[1] };
         my $daya = $patches->[ int rand @$patches ];
-        $self->note($dura, $baya, $daya);
+        if ($return) {
+            return [ $baya, $daya ];
+        }
+        else {
+            $self->note($dura, $baya, $daya);
+        }
     }
     else { # single-strike
         my $patch = $bols->[ int rand @$bols ];
@@ -242,13 +250,23 @@ Traditional "groove patterns":
 
 =item teentaal([$duration])
 
+16 beats
+
 =item keherawa([$duration])
+
+8 beats
 
 =item jhaptaal([$duration])
 
+10 beats
+
 =item dadra([$duration])
 
+6 beats
+
 =item rupaktaal([$duration])
+
+7 beats
 
 =back
 
