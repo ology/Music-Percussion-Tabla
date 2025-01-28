@@ -2,6 +2,7 @@ Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
     - Update the eg/durations.pl example program.
+    - Fix dumb syntax error in eg/durations.pl.
 
 0.0605 2025-01-28 09:45:42
     - Add more synopsis examples.
