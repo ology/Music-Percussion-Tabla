@@ -187,7 +187,7 @@ sub BUILD {
 =head2 strike
 
   $tabla->strike($bol);
-  $tabla->strike($bol, $duration, $return);
+  $tabla->strike($bol, $duration);
 
 This method handles two types of strikes: single and double.
 
@@ -197,9 +197,6 @@ random.
 
 The B<duration> is a note length like C<$tabla-E<gt>eighth> (or
 C<'en'> in MIDI-Perl notation).
-
-If true, the B<return> flag will return the chosen B<bol> patch
-instead of adding it as a C<note> to the score.
 
 (If specific patches are desired, use the C<note> method, as shown
 above.)
@@ -229,21 +226,11 @@ sub strike {
         my $baya = $patches->[ int rand @$patches ];
         $patches = $self->patches->{ $bols->[1] };
         my $daya = $patches->[ int rand @$patches ];
-        if ($return) {
-            return [ $baya, $daya ];
-        }
-        else {
-            $self->note($dura, $baya, $daya);
-        }
+        $self->note($dura, $baya, $daya);
     }
     else { # single-strike
         my $patch = $bols->[ int rand @$bols ];
-        if ($return) {
-            return [ $patch ];
-        }
-        else {
-            $self->note($dura, $patch);
-        }
+        $self->note($dura, $patch);
     }
 }
 
@@ -253,23 +240,23 @@ Traditional "groove patterns":
 
 =over
 
-=item teentaal([$duration, $return])
+=item teentaal([$duration])
 
 16 beats
 
-=item keherawa([$duration, $return])
+=item keherawa([$duration])
 
 8 beats
 
-=item jhaptaal([$duration, $return])
+=item jhaptaal([$duration])
 
 10 beats
 
-=item dadra([$duration, $return])
+=item dadra([$duration])
 
 6 beats
 
-=item rupaktaal([$duration, $return])
+=item rupaktaal([$duration])
 
 7 beats
 
@@ -278,88 +265,73 @@ Traditional "groove patterns":
 =cut
 
 sub teentaal {
-    my ($self, $dura, $return) = @_;
+    my ($self, $dura) = @_;
     $dura ||= $self->quarter;
-    my %patch;
-    my $i = 0;
     for (1 .. 2) {
-        $patch{ $i++ } = $self->strike('dha', $dura, $return);
-        $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-        $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-        $patch{ $i++ } = $self->strike('dha', $dura, $return);
+        $self->strike('dha', $dura);
+        $self->strike('dhin', $dura);
+        $self->strike('dhin', $dura);
+        $self->strike('dha', $dura);
     }
-    $patch{ $i++ } = $self->strike('dha', $dura, $return);
-    $patch{ $i++ } = $self->strike('tin', $dura, $return);
-    $patch{ $i++ } = $self->strike('tin', $dura, $return);
-    $patch{ $i++ } = $self->strike('ta', $dura, $return);
-    $patch{ $i++ } = $self->strike('ta', $dura, $return);
-    $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-    $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-    $patch{ $i++ } = $self->strike('dha', $dura, $return);
-    return [ map { @{ $patch{$_} } } sort { $a <=> $b } keys %patch ];
+    $self->strike('dha', $dura);
+    $self->strike('tin', $dura);
+    $self->strike('tin', $dura);
+    $self->strike('ta', $dura);
+    $self->strike('ta', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('dha', $dura);
 }
 
 sub keherawa {
-    my ($self, $dura, $return) = @_;
+    my ($self, $dura) = @_;
     $dura ||= $self->quarter;
-    my %patch;
-    my $i = 0;
-    $patch{ $i++ } = $self->strike('dha', $dura, $return);
-    $patch{ $i++ } = $self->strike('ge', $dura, $return);
-    $patch{ $i++ } = $self->strike('na', $dura, $return);
-    $patch{ $i++ } = $self->strike('tin', $dura, $return);
-    $patch{ $i++ } = $self->strike('na', $dura, $return);
-    $patch{ $i++ } = $self->strike('ke', $dura, $return);
-    $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-    $patch{ $i++ } = $self->strike('na', $dura, $return);
-    return [ map { @{ $patch{$_} } } sort { $a <=> $b } keys %patch ];
+    $self->strike('dha', $dura);
+    $self->strike('ge', $dura);
+    $self->strike('na', $dura);
+    $self->strike('tin', $dura);
+    $self->strike('na', $dura);
+    $self->strike('ke', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('na', $dura);
 }
 
 sub jhaptaal {
-    my ($self, $dura, $return) = @_;
+    my ($self, $dura) = @_;
     $dura ||= $self->quarter;
-    my %patch;
-    my $i = 0;
-    $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-    $patch{ $i++ } = $self->strike('na', $dura, $return);
-    $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-    $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-    $patch{ $i++ } = $self->strike('na', $dura, $return);
-    $patch{ $i++ } = $self->strike('tin', $dura, $return);
-    $patch{ $i++ } = $self->strike('na', $dura, $return);
-    $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-    $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-    $patch{ $i++ } = $self->strike('na', $dura, $return);
-    return [ map { @{ $patch{$_} } } sort { $a <=> $b } keys %patch ];
+    $self->strike('dhin', $dura);
+    $self->strike('na', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('na', $dura);
+    $self->strike('tin', $dura);
+    $self->strike('na', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('na', $dura);
 }
 
 sub dadra {
-    my ($self, $dura, $return) = @_;
+    my ($self, $dura) = @_;
     $dura ||= $self->quarter;
-    my %patch;
-    my $i = 0;
-    $patch{ $i++ } = $self->strike('dha', $dura, $return);
-    $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-    $patch{ $i++ } = $self->strike('na', $dura, $return);
-    $patch{ $i++ } = $self->strike('dha', $dura, $return);
-    $patch{ $i++ } = $self->strike('ti', $dura, $return);
-    $patch{ $i++ } = $self->strike('na', $dura, $return);
-    return [ map { @{ $patch{$_} } } sort { $a <=> $b } keys %patch ];
+    $self->strike('dha', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('na', $dura);
+    $self->strike('dha', $dura);
+    $self->strike('ti', $dura);
+    $self->strike('na', $dura);
 }
 
 sub rupaktaal {
-    my ($self, $dura, $return) = @_;
+    my ($self, $dura) = @_;
     $dura ||= $self->quarter;
-    my %patch;
-    my $i = 0;
-    $patch{ $i++ } = $self->strike('tin', $dura, $return);
-    $patch{ $i++ } = $self->strike('tin', $dura, $return);
-    $patch{ $i++ } = $self->strike('na', $dura, $return);
-    $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-    $patch{ $i++ } = $self->strike('na', $dura, $return);
-    $patch{ $i++ } = $self->strike('dhin', $dura, $return);
-    $patch{ $i++ } = $self->strike('na', $dura, $return);
-    return [ map { @{ $patch{$_} } } sort { $a <=> $b } keys %patch ];
+    $self->strike('tin', $dura);
+    $self->strike('tin', $dura);
+    $self->strike('na', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('na', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('na', $dura);
 }
 
 1;
