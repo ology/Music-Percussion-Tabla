@@ -7,7 +7,7 @@ use Music::Percussion::Tabla ();
 
 my $bpm  = shift || 120;
 my $bars = shift || 8;
-my $size = shift || 5;
+my $size = shift || 4;
 
 my $mdp = Music::Duration::Partition->new(
   size    => $size,
