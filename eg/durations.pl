@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 
+use List::Util qw(zip);
 use Music::Duration::Partition ();
 use Music::Percussion::Tabla ();
 
@@ -31,8 +32,9 @@ my @voices = map { $bols[ int rand @bols ] } $motifs[1]->@*;
 
 for my $i (1 .. $t->bars) {
   if ($i % 2) {
-    for my $j (0 .. $motifs[1]->$#*) {
-      $t->strike($voices[$j], $motifs[1]->[$j]);
+    for (zip \@voices, $motifs[1]) {
+      my ($v, $m) = @$_;
+      $t->strike($v, $m);
     }
   }
   else {
