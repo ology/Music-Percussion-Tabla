@@ -33,8 +33,8 @@ my @voices = map { $bols[ int rand @bols ] } $motifs[1]->@*;
 for my $i (1 .. $t->bars) {
   if ($i % 2) {
     for (zip \@voices, $motifs[1]) {
-      my ($v, $m) = @$_;
-      $t->strike($v, $m);
+      my ($bol, $dura) = @$_;
+      $t->strike($bol, $dura);
     }
   }
   else {
