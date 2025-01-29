@@ -17,14 +17,14 @@ my $mdp = Music::Duration::Partition->new(
   groups  => [qw( 1   1  2   1  2)],
 );
 
-my @motifs = $mdp->motifs(2);
-
 my $t = Music::Percussion::Tabla->new(
   file   => "$0.mid",
   bpm    => $bpm,
   bars   => $bars,
   reverb => 8,
 );
+
+my @motifs = $mdp->motifs(2);
 
 my @bols = keys $t->patches->%*;
 
