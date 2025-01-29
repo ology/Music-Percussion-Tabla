@@ -29,7 +29,7 @@ for my $i (1 .. $t->bars) {
     my $bol = $bols[ int rand @bols ];
     $t->strike($bol, $dura);
   }
-  $t->rest($t->quarter);
+  $t->rest($t->quarter) unless $i == $t->bars;
 }
 
 $t->play_with_timidity;
