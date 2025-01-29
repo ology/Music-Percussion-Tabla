@@ -19,6 +19,7 @@ my $mdp = Music::Duration::Partition->new(
 my $motif = $mdp->motif;
 
 my $t = Music::Percussion::Tabla->new(
+  file   => "$0.mid",
   bpm    => $bpm,
   bars   => $bars,
   reverb => 8,
@@ -34,4 +35,5 @@ for my $i (1 .. $t->bars) {
   $t->rest($t->quarter) unless $i == $t->bars;
 }
 
-$t->play_with_timidity;
+# $t->play_with_timidity;
+$t->write;
