@@ -14,7 +14,10 @@ my $mdp = Music::Duration::Partition->new(
 
 my $motif = $mdp->motif;
 
-my $t = Music::Percussion::Tabla->new(bars => 8);
+my $t = Music::Percussion::Tabla->new(
+  bars   => 8,
+  reverb => 8,
+);
 
 my @bols = keys $t->patches->%*;
 
@@ -23,7 +26,7 @@ for my $i (1 .. $t->bars) {
     my $bol = $bols[ int rand @bols ];
     $t->strike($bol, $dura);
   }
-  $t->rest($t->half);
+  $t->rest($t->quarter);
 }
 
 $t->play_with_timidity;
