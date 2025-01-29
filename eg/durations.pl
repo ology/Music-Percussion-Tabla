@@ -5,6 +5,8 @@ use warnings;
 use Music::Duration::Partition ();
 use Music::Percussion::Tabla ();
 
+my $bpm = shift || 120;
+
 my $mdp = Music::Duration::Partition->new(
   size    => 5,
   pool    => [qw(qn den en dsn sn)],
@@ -15,6 +17,7 @@ my $mdp = Music::Duration::Partition->new(
 my $motif = $mdp->motif;
 
 my $t = Music::Percussion::Tabla->new(
+  bpm    => $bpm,
   bars   => 8,
   reverb => 8,
 );
