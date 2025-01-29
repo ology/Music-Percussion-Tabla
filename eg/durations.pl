@@ -31,15 +31,15 @@ my @bols = keys $t->patches->%*;
 my @voices = map { $bols[ int rand @bols ] } $motifs[1]->@*;
 
 for my $i (1 .. $t->bars) {
-  if ($i % 2) {
-    for (zip \@voices, $motifs[1]) {
-      my ($bol, $dura) = @$_;
+  if ($i % 2 == 0) {
+    for my $dura ($motifs[0]->@*) {
+      my $bol = $bols[ int rand @bols ];
       $t->strike($bol, $dura);
     }
   }
   else {
-    for my $dura ($motifs[0]->@*) {
-      my $bol = $bols[ int rand @bols ];
+    for (zip \@voices, $motifs[1]) {
+      my ($bol, $dura) = @$_;
       $t->strike($bol, $dura);
     }
   }
