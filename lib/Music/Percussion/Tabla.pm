@@ -26,6 +26,8 @@ extends 'MIDI::Drummer::Tiny';
     $t->rest($t->quarter);
   }
 
+  $t->strike(['ge', 'ke']); # double-strike
+
   for (1 .. 2) {
     $t->strike('ke', $t->sixteenth) for 1 .. 3;
     $t->strike('ti', $t->sixteenth) for 1 .. 4;
@@ -187,6 +189,7 @@ sub BUILD {
 =head2 strike
 
   $tabla->strike($bol);
+  $tabla->strike([$bol1, $bol2]);
   $tabla->strike($bol, $duration);
 
 This method handles two types of strikes: single and double.
@@ -194,6 +197,9 @@ This method handles two types of strikes: single and double.
 A named B<bol> can have one or more B<patches> associated with it. For
 single strikes, the method will play one of the B<bol> patches at
 random.
+
+A B<bol> that is an array reference of two named bols, signifies a
+double-strike on the given members.
 
 The B<duration> is a note length like C<$tabla-E<gt>eighth> (or
 C<'en'> in MIDI-Perl notation).
@@ -221,7 +227,14 @@ sub strike {
     my ($self, $bol, $dura, $return) = @_;
     $dura ||= $self->quarter;
     my $bols = $self->patches->{$bol};
-    if (any { /[a-z]/ } @$bols) { # double-strike
+    if (ref $bol eq 'ARRAY') {
+        my $patches = $self->patches->{ $bol->[0] };
+        my $baya = $patches->[ int rand @$patches ];
+        $patches = $self->patches->{ $bol->[1] };
+        my $daya = $patches->[ int rand @$patches ];
+        $self->note($dura, $baya, $daya);
+    }
+    elsif (any { /[a-z]/ } @$bols) { # double-strike
         my $patches = $self->patches->{ $bols->[0] };
         my $baya = $patches->[ int rand @$patches ];
         $patches = $self->patches->{ $bols->[1] };
