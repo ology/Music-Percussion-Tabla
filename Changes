@@ -1,7 +1,9 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
-    - Fixed up the eg/durations.pl example program.
+    - Add the ability to double-strike with an arrayref bol.
+    - Fix up the eg/durations.pl example program.
+    - Add the eg/simple.pl program.
 
 0.0605 2025-01-28 09:45:42
     - Add more synopsis examples.
