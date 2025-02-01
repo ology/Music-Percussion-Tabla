@@ -229,22 +229,41 @@ sub strike {
     my $bols = $self->patches->{$bol};
     if (ref $bol eq 'ARRAY') {
         my $patches = $self->patches->{ $bol->[0] };
-        my $baya = $patches->[ int rand @$patches ];
+        if (any { /[a-z]/ } @$patches) {
+            _double($self, $patches, $dura);
+        }
+        else {
+            _single($self, $patches, $dura);
+        }
         $patches = $self->patches->{ $bol->[1] };
-        my $daya = $patches->[ int rand @$patches ];
-        $self->note($dura, $baya, $daya);
+        if (any { /[a-z]/ } @$patches) {
+            _double($self, $patches, $dura);
+        }
+        else {
+            _single($self, $patches, $dura);
+        }
     }
     elsif (any { /[a-z]/ } @$bols) { # double-strike
-        my $patches = $self->patches->{ $bols->[0] };
-        my $baya = $patches->[ int rand @$patches ];
-        $patches = $self->patches->{ $bols->[1] };
-        my $daya = $patches->[ int rand @$patches ];
-        $self->note($dura, $baya, $daya);
+        _double($self, $bols, $dura);
     }
     else { # single-strike
-        my $patch = $bols->[ int rand @$bols ];
-        $self->note($dura, $patch);
+        _single($self, $bols, $dura);
     }
+}
+
+sub _double {
+    my ($self, $bols, $dura) = @_;
+    my $patches = $self->patches->{ $bols->[0] };
+    my $baya = $patches->[ int rand @$patches ];
+    $patches = $self->patches->{ $bols->[1] };
+    my $daya = $patches->[ int rand @$patches ];
+    $self->note($dura, $baya, $daya);
+}
+
+sub _single {
+    my ($self, $bols, $dura) = @_;
+    my $patch = $bols->[ int rand @$bols ];
+    $self->note($dura, $patch);
 }
 
 =head2 thekas
