@@ -243,10 +243,10 @@ sub strike {
             _single($self, $patches, $dura);
         }
     }
-    elsif (any { /[a-z]/ } @$bols) { # double-strike
+    elsif (any { /[a-z]/ } @$bols) {
         _double($self, $bols, $dura);
     }
-    else { # single-strike
+    else {
         _single($self, $bols, $dura);
     }
 }
