@@ -38,11 +38,13 @@ extends 'MIDI::Drummer::Tiny';
 
   $t->tirakita($t->sixteenth) for 1 .. 2;
 
-  $t->teentaal($t->eighth)  for 1 .. $t->bars;
+  $t->teentaal              for 1 .. $t->bars;
   $t->keherawa($t->eighth)  for 1 .. $t->bars;
   $t->jhaptaal($t->eighth)  for 1 .. $t->bars;
   $t->dadra($t->eighth)     for 1 .. $t->bars;
   $t->rupaktaal($t->eighth) for 1 .. $t->bars;
+  $t->rupaktaal($t->eighth) for 1 .. $t->bars;
+  $t->ektaal                for 1 .. $t->bars;
 
   $t->play_with_timidity;
   # OR:
