@@ -35,6 +35,8 @@ extends 'MIDI::Drummer::Tiny';
 
   $t->rest($t->quarter);
 
+  $t->tirakita($t->sixteenth) for 1 .. 2;
+
   $t->teentaal($t->eighth)  for 1 .. $t->bars;
   $t->keherawa($t->eighth)  for 1 .. $t->bars;
   $t->jhaptaal($t->eighth)  for 1 .. $t->bars;
