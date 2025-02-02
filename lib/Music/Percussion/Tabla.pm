@@ -45,6 +45,7 @@ extends 'MIDI::Drummer::Tiny';
   $t->rupaktaal($t->eighth) for 1 .. $t->bars;
   $t->rupaktaal($t->eighth) for 1 .. $t->bars;
   $t->ektaal;
+  $t->arachartaal;
 
   $t->play_with_timidity;
   # OR:
@@ -305,6 +306,10 @@ Traditional "groove patterns":
 
 12 beats
 
+=item arachartaal([$duration])
+
+14 beats
+
 =item tirakita([$duration])
 
 4 beats
@@ -399,6 +404,27 @@ sub ektaal {
     $self->strike('dha', $dura);
     $self->tirakita($dura4);
     $self->strike('dhin', $dura);
+    $self->strike('na', $dura);
+}
+
+sub arachartaal {
+    my ($self, $dura) = @_;
+    $dura ||= $self->quarter;
+    my $ticks = ticks($self->score);
+    my $dura4 = 'd' . ($ticks * dura_size($dura) / 4);
+    $self->strike('dhin', $dura);
+    $self->tirakita($dura4);
+    $self->strike('dhit', $dura);
+    $self->strike('na', $dura);
+    $self->strike('ti', $dura);
+    $self->strike('na', $dura);
+    $self->strike('ke', $dura);
+    $self->strike('ta', $dura);
+    $self->tirakita($dura4);
+    $self->strike('dhit', $dura);
+    $self->strike('na', $dura);
+    $self->strike('dhit', $dura);
+    $self->strike('dhit', $dura);
     $self->strike('na', $dura);
 }
 
