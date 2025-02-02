@@ -2,6 +2,7 @@ Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
     - Add the eg/simple-breaks.pl program.
+    - Improve documentation.
 
 0.0701 2025-01-31 23:05:25
     - Fix strike() logic.
