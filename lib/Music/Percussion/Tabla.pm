@@ -138,8 +138,7 @@ Each bol can be 1 or more patch numbers.
 
 Default single strike bol patches:
 
-  ga:   65
-  ge:   66 76
+  ge:   65 66 76
   ke:   64 77 79
   na:   78 81
   ta:   71 75 85
@@ -161,8 +160,7 @@ has patches => (
     default => sub {
         {
             # single strikes
-            ga   => [qw(65)],
-            ge   => [qw(66 76)],
+            ge   => [qw(65 66 76)],
             ke   => [qw(64 77 79)],
             na   => [qw(78 81)],
             ta   => [qw(71 75 85)],
@@ -219,7 +217,7 @@ above.)
 
 1. Single strike bols:
 
-  ga, ge, ke, na, ta, ti, tin, tun
+  ge, ke, na, ta, ti, tin, tun
 
 2. Double strike bols:
 
