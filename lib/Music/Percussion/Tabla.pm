@@ -7,6 +7,7 @@ our $VERSION = '0.0703';
 use Moo;
 use File::ShareDir qw(dist_dir);
 use List::Util qw(any);
+use MIDI::Util qw(dura_size ticks);
 use strictures 2;
 use namespace::clean;
 
@@ -298,6 +299,10 @@ Traditional "groove patterns":
 
 7 beats
 
+=item ektaal([$duration])
+
+12 beats
+
 =item tirakita([$duration])
 
 4 beats
@@ -372,6 +377,25 @@ sub rupaktaal {
     $self->strike('na', $dura);
     $self->strike('dhin', $dura);
     $self->strike('na', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('na', $dura);
+}
+
+sub ektaal {
+    my ($self, $dura) = @_;
+    $dura ||= $self->quarter;
+    my $ticks = ticks($self->score);
+    my $dura4 = 'd' . ($ticks * dura_size($dura) / 4);
+    $self->strike('dhin', $dura);
+    $self->strike('dhin', $dura);
+    $self->strike('dha', $dura);
+    $self->tirakita($dura4);
+    $self->strike('ti', $dura);
+    $self->strike('na', $dura);
+    $self->strike('ke', $dura);
+    $self->strike('ta', $dura);
+    $self->strike('dha', $dura);
+    $self->tirakita($dura4);
     $self->strike('dhin', $dura);
     $self->strike('na', $dura);
 }
