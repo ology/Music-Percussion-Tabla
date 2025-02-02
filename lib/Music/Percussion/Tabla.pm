@@ -296,6 +296,10 @@ Traditional "groove patterns":
 
 7 beats
 
+=item tirakita([$duration])
+
+4 beats
+
 =back
 
 =cut
@@ -368,6 +372,15 @@ sub rupaktaal {
     $self->strike('na', $dura);
     $self->strike('dhin', $dura);
     $self->strike('na', $dura);
+}
+
+sub tirakita {
+    my ($self, $dura) = @_;
+    $dura ||= $self->quarter;
+    $self->strike('ti', $dura);
+    $self->strike('na', $dura);
+    $self->strike('ke', $dura);
+    $self->strike('ta', $dura);
 }
 
 1;
