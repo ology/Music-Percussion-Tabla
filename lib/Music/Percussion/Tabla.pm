@@ -89,6 +89,8 @@ as of yet...
     29  88  ringing mid
   ...
 
+Edit and run the F<eg/bols.pl> example program to hear each of these.
+
 To play patches by number instead of name (e.g. for the C<*> unknown
 bols), do this to add the C<84>th MIDInum entry score:
 
