@@ -30,6 +30,7 @@ $t->dadra($t->eighth)     for 1 .. $t->bars;
 $t->rupaktaal($t->eighth) for 1 .. $t->bars;
 $t->rupaktaal($t->eighth) for 1 .. $t->bars;
 $t->ektaal;
+$t->arachartaal;
 
 $t->play_with_timidity;
 # $t->write;
