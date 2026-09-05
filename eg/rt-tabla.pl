@@ -66,25 +66,29 @@ my $timer = IO::Async::Timer::Periodic->new(
         $ticks++;
         if ($ticks % $clocks_per_beat == 0) {
             my $spec = $t->strike($bols->next)->[0];
-            push @queue, @$spec > 2 ? @{$spec}[1,2] : $spec->[1];
+            push @queue, @$spec > 2 ? [ @{$spec}[1,2] ] : $spec->[1];
             for my $note (@queue) {
-                say "N: $note";
-                $midi_out->note_on(
-                    $channel,
-                    $note,
-                    127 # velocity
-                );
+                say 'N: ', ref $note eq 'ARRAY' ? "@$note" : $note;
+                if (ref $note eq 'ARRAY') {
+                    on($midi_out, $note->[0]);
+                    on($midi_out, $note->[1]);
+                }
+                else {
+                    on($midi_out, $note);
+                }
             }
             $beat_count++;
         }
         else {
             # drain the queue and send note_off msgs
             while (my $note = pop @queue) {
-                $midi_out->note_off(
-                    $channel,
-                    $note,
-                    0
-                );
+                if (ref $note eq 'ARRAY') {
+                    off($midi_out, $note->[0]);
+                    off($midi_out, $note->[1]);
+                }
+                else {
+                    off($midi_out, $note);
+                }
             }
         }
     },
@@ -93,3 +97,11 @@ my $timer = IO::Async::Timer::Periodic->new(
 $timer->start;
 $loop->add($timer);
 $loop->run;
+
+sub on ($midi_out, $note, $channel=0, $velo=127) {
+    $midi_out->note_on($channel, $note, $velo);
+}
+
+sub off ($midi_out, $note, $channel=0, $velo=0) {
+    $midi_out->note_off($channel, $note, $velo);
+}
