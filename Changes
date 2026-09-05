@@ -1,6 +1,7 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Fix the array-ref handling logic in the eg/rt-tabla.pl program.
 
 0.0706 2026-09-05 15:37:55
     - Add handy instructions regarding the soundfont.
