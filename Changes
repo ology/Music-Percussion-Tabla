@@ -1,6 +1,8 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+
+0.0705 2026-09-05 15:31:17
     - Playing with timidity is no longer a thing.
     - Return note specifications from the `strike()` method.
     - Add the eg/rt-tabla.pl example program.
