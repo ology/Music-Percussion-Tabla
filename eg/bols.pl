@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 
+use Data::Dumper::Compact qw(ddc);
 use Music::Percussion::Tabla ();
 
 my $bpm = shift || 100;
@@ -12,8 +13,10 @@ my $t = Music::Percussion::Tabla->new(
     beats  => 8,
 );
 
+my @specs;
+
 for (1 .. $t->beats) {
-    $t->strike('tin');
+    push @specs, $t->strike('tin');
     # $t->note($t->quarter, 60); # tin
     # $t->note($t->quarter, 63); # tin
     # $t->note($t->quarter, 83); # tin muted
@@ -45,4 +48,6 @@ for (1 .. $t->beats) {
     # $t->note($t->quarter, 73); # ?
 }
 
-$t->play_with_timidity;
+print ddc \@specs;
+
+$t->write;

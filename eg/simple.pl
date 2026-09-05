@@ -19,6 +19,4 @@ for (1 .. $t->bars) {
   $t->strike('dha');
 }
 
-# $t->play_with_timidity;
 $t->write;
-# $t->timidity_cfg('/Users/you/timidity.cfg');

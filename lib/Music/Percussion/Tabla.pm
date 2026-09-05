@@ -47,11 +47,7 @@ extends 'MIDI::Drummer::Tiny';
   $t->ektaal;
   $t->arachartaal;
 
-  $t->play_with_timidity;
-  # OR:
   $t->write; # save the score as a MIDI file
-  $t->timidity_cfg('/Users/you/timidity.cfg');
-  # then run timidity with that config and MIDI file
 
 =head1 DESCRIPTION
 
@@ -191,7 +187,7 @@ constructor attributes of L<MIDI::Drummer::Tiny>.
 
 sub BUILD {
     my ($self, $args) = @_;
-    $self->set_channel(0);
+    $self->set_channel(0); # XXX what?
 }
 
 =head2 strike
@@ -199,6 +195,9 @@ sub BUILD {
   $tabla->strike($bol);
   $tabla->strike([$bol1, $bol2]);
   $tabla->strike($bol, $duration);
+
+Add to the strike to the score and also return a MIDI note
+specification C<[$duration, @note_list]> for external handling.
 
 This method handles two types of strikes: single and double.
 
@@ -234,29 +233,31 @@ chosen at random, as with the single-strike.
 sub strike {
     my ($self, $bol, $dura, $return) = @_;
     $dura ||= $self->quarter;
+    my @strikes;
     my $bols = $self->patches->{$bol};
     if (ref $bol eq 'ARRAY') {
         my $patches = $self->patches->{ $bol->[0] };
         if (any { /[a-z]/ } @$patches) {
-            _double($self, $patches, $dura);
+            push @strikes, _double($self, $patches, $dura);
         }
         else {
-            _single($self, $patches, $dura);
+            push @strikes, _single($self, $patches, $dura);
         }
         $patches = $self->patches->{ $bol->[1] };
         if (any { /[a-z]/ } @$patches) {
-            _double($self, $patches, $dura);
+            push @strikes, _double($self, $patches, $dura);
         }
         else {
-            _single($self, $patches, $dura);
+            push @strikes, _single($self, $patches, $dura);
         }
     }
     elsif (any { /[a-z]/ } @$bols) {
-        _double($self, $bols, $dura);
+        push @strikes, _double($self, $bols, $dura);
     }
     else {
-        _single($self, $bols, $dura);
+        push @strikes, _single($self, $bols, $dura);
     }
+    return \@strikes;
 }
 
 sub _double {
@@ -266,12 +267,14 @@ sub _double {
     $patches = $self->patches->{ $bols->[1] };
     my $daya = $patches->[ int rand @$patches ];
     $self->note($dura, $baya, $daya);
+    return [ $dura, $baya, $daya ];
 }
 
 sub _single {
     my ($self, $bols, $dura) = @_;
     my $patch = $bols->[ int rand @$bols ];
     $self->note($dura, $patch);
+    return [ $dura, $patch ];
 }
 
 =head2 thekas

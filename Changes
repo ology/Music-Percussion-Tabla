@@ -1,6 +1,8 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Playing with timidity is no longer a thing.
+    - Return note specifications from the `strike()` method.
 
 0.0704 2025-02-02 15:44:22
     - Make 'ga' a 'ge' strike.
