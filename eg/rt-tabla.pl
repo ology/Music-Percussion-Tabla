@@ -8,7 +8,6 @@
 # spcifications, so far.
 
 use v5.36;
-use feature 'try';
 use Array::Circular ();
 use Data::Dumper::Compact qw(ddc);
 use MIDI::RtMidi::FFI::Device ();
@@ -16,7 +15,6 @@ use MIDI::RtMidi::Util qw(out_port stop_device);
 use Music::Percussion::Tabla ();
 use IO::Async::Loop ();
 use IO::Async::Timer::Periodic ();
-no warnings 'experimental::try';
 
 my $port = shift || 'synth'; # MIDI device
 my $bpm  = shift || 300; # beats-per-minute
