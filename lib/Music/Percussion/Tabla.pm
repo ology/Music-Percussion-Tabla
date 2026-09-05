@@ -2,7 +2,7 @@ package Music::Percussion::Tabla;
 
 # ABSTRACT: Play the tabla!
 
-our $VERSION = '0.0705';
+our $VERSION = '0.0706';
 
 use Moo;
 use File::ShareDir qw(dist_dir);
@@ -53,6 +53,11 @@ extends 'MIDI::Drummer::Tiny';
 
 C<Music::Percussion::Tabla> provides named associations between tabla
 drum sounds and the included soundfont file (which is B<4.1MB>).
+
+To use the soundfont file, with say fluidsynth, add it to the startup
+command, like this (on the mac):
+
+  fluidsynth -a coreaudio -m coremidi -g 2.0 ~/Music/soundfont/Tabla.sf2
 
 Here are my "non-tabla player" descriptions of the sounds. And the
 proper "syllable" names for the items with a C<*> are unknown to me,
