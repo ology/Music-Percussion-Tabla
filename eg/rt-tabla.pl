@@ -66,12 +66,13 @@ my $timer = IO::Async::Timer::Periodic->new(
             my $spec = $t->strike($bols->next)->[0];
             push @queue, @$spec > 2 ? [ @{$spec}[1,2] ] : $spec->[1];
             for my $note (@queue) {
-                say 'N: ', ref $note eq 'ARRAY' ? "@$note" : $note;
                 if (ref $note eq 'ARRAY') {
+                    say "N: @$note";
                     on($midi_out, $note->[0]);
                     on($midi_out, $note->[1]);
                 }
                 else {
+                    say "N: $note";
                     on($midi_out, $note);
                 }
             }
