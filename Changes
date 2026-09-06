@@ -1,6 +1,7 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+    - Fix the module ABSTRACT. Oops. :(
 
 0.0708 2026-09-05 17:40:07
     - Return strikes from the combination routines.
