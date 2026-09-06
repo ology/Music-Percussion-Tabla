@@ -2,7 +2,7 @@
 
 # Play select tablas phrases in real-time
 # Example(s):
-# perl rt-tabla.pl fluid 200
+# perl rt-tabla.pl synth 200
 
 # Note that this code ignores the duration part of the note
 # spcifications, so far.
