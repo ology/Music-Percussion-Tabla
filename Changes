@@ -1,6 +1,8 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+
+0.0708 2026-09-05 17:40:07
     - Return strikes from the combination routines.
     - Improve documentation.
     - Clean-up the eg/rt-tabla.pl program.
