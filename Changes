@@ -3,6 +3,7 @@ Revision history for Music-Percussion-Tabla
 {{$NEXT}}
     - Return strikes from the combination routines.
     - Improve documentation.
+    - Clean-up the eg/rt-tabla.pl program.
 
 0.0707 2026-09-05 16:20:44
     - Fix the array-ref handling logic in the eg/rt-tabla.pl program.
