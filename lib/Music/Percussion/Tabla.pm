@@ -20,19 +20,23 @@ extends 'MIDI::Drummer::Tiny';
   my $t = Music::Percussion::Tabla->new;
 
   for (1 .. $t->bars) {
-    $t->strike('ta', $t->eighth);
+    $t->strike('ta', $t->eighth); # write to the score
     $t->strike('ta', $t->eighth);
     $t->strike('dha');
     $t->strike('ge');
     $t->rest($t->quarter);
   }
 
-  $t->strike(['ge', 'ke']); # double-strike
+  my @notes; # optionally save the notes for other purposes
+
+  push @notes, $t->strike(['ge', 'ke']); # double-strike
 
   for (1 .. 2) {
-    $t->strike('ke', $t->sixteenth) for 1 .. 3;
-    $t->strike('ti', $t->sixteenth) for 1 .. 4;
+    push @notes, $t->strike('ke', $t->sixteenth) for 1 .. 3;
+    push @notes, $t->strike('ti', $t->sixteenth) for 1 .. 4;
   }
+
+  print "Notes: @notes\n";
 
   $t->rest($t->quarter);
 
