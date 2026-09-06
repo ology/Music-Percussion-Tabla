@@ -197,7 +197,7 @@ sub BUILD {
     $self->set_channel(0); # XXX what?
 }
 
-=head2 strikes
+=head2 strike
 
   $tabla->strikes($bol);
   $tabla->strikes([$bol1, $bol2]);
