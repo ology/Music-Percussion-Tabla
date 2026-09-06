@@ -1,6 +1,6 @@
 package Music::Percussion::Tabla;
 
-# ABSTRACT: Play the tabla!
+# ABSTRACT: Play the tablas!
 
 our $VERSION = '0.0708';
 
