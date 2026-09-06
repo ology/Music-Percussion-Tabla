@@ -240,31 +240,31 @@ chosen at random, as with the single-strike.
 sub strike {
     my ($self, $bol, $dura, $return) = @_;
     $dura ||= $self->quarter;
-    my @strikes;
+    my @strike;
     my $bols = $self->patches->{$bol};
     if (ref $bol eq 'ARRAY') {
         my $patches = $self->patches->{ $bol->[0] };
         if (any { /[a-z]/ } @$patches) {
-            push @strikes, _double($self, $patches, $dura);
+            push @strike, _double($self, $patches, $dura);
         }
         else {
-            push @strikes, _single($self, $patches, $dura);
+            push @strike, _single($self, $patches, $dura);
         }
         $patches = $self->patches->{ $bol->[1] };
         if (any { /[a-z]/ } @$patches) {
-            push @strikes, _double($self, $patches, $dura);
+            push @strike, _double($self, $patches, $dura);
         }
         else {
-            push @strikes, _single($self, $patches, $dura);
+            push @strike, _single($self, $patches, $dura);
         }
     }
     elsif (any { /[a-z]/ } @$bols) {
-        push @strikes, _double($self, $bols, $dura);
+        push @strike, _double($self, $bols, $dura);
     }
     else {
-        push @strikes, _single($self, $bols, $dura);
+        push @strike, _single($self, $bols, $dura);
     }
-    return \@strikes;
+    return \@strike;
 }
 
 sub _double {
