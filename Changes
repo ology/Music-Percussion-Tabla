@@ -1,6 +1,8 @@
 Revision history for Music-Percussion-Tabla
 
 {{$NEXT}}
+
+0.0801 2026-10-15 20:45:39
     - Fix patch numbers. Oops!
     - Flesh-out tests, finally.
 
