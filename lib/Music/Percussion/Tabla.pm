@@ -17,7 +17,9 @@ extends 'MIDI::Drummer::Tiny';
 
   use Music::Percussion::Tabla ();
 
-  my $t = Music::Percussion::Tabla->new;
+  my $t = Music::Percussion::Tabla->new(file => 'tablas.mid');
+
+  print 'Soundfont: ', $t->soundfont, "\n"; # sf2 file location
 
   for (1 .. $t->bars) {
     $t->strike('ta', $t->eighth); # write to the score
@@ -51,17 +53,17 @@ extends 'MIDI::Drummer::Tiny';
   $t->ektaal;
   $t->arachartaal;
 
-  $t->write; # save the score as a MIDI file
+  $t->write; # save the score as tablas.mid
 
 =head1 DESCRIPTION
 
 C<Music::Percussion::Tabla> provides named associations between tabla
 drum sounds and the included soundfont file (which is B<4.1MB>).
 
-To use the soundfont file, with say fluidsynth, add it to the startup
-command, like this (on the mac):
+To play F<tablas.mid> with fluidsynth and the soundfont file (as
+printed above), do this:
 
-  fluidsynth -a coreaudio -m coremidi -g 2.0 ~/Music/soundfont/Tabla.sf2
+  fluidsynth -i <the tabla sf2 file> tablas.mid
 
 Here are the names and descriptions of the sounds:
 
@@ -135,7 +137,7 @@ sub _build_soundfont {
 
   $patches = $tabla->patches;
 
-Each bol can be 1 or more patch numbers.
+Each bol can have 1 or more patch numbers.
 
 Default single strike bol patches:
 
@@ -480,5 +482,7 @@ L<https://www.taalgyan.com/theory/basic-bols-on-tabla/>
 
 L<https://kksongs.org/tabla/chapter02.html> &
 L<https://kksongs.org/tabla/chapter03.html>
+
+L<https://www.fluidsynth.org/>
 
 =cut
