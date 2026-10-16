@@ -145,6 +145,7 @@ Default single strike bol patches:
   ke:   64 68 70 74
   na:   71 75 78
   te:   82 84
+  ti:   86
   tin:  79 87
   sur:  81 83
 
@@ -166,7 +167,7 @@ has patches => (
             ke   => [qw(64 68 70 74)],
             na   => [qw(71 75 78)],
             te   => [qw(82 84)],
-            ti   => [qw(61 68 70 72 82 86)],
+            ti   => [qw(86)],
             tin  => [qw(79 87)],
             sur  => [qw(81 83)],
             # double strikes
