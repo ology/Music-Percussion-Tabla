@@ -162,13 +162,13 @@ has patches => (
     default => sub {
         {
             # single strikes
-            ge   => [qw(65 66 76)],
-            ke   => [qw(64 77 79)],
-            na   => [qw(78 81)],
-            ta   => [qw(71 75 85)],
+            ge   => [qw(61 69 73 76 80)],
+            ke   => [qw(64 68 70 74)],
+            na   => [qw(71 75 78)],
+            te   => [qw(82 84)],
             ti   => [qw(61 68 70 72 82 86)],
-            tin  => [qw(60 63 83 87)],
-            tun  => [qw(88)],
+            tin  => [qw(79 87)],
+            sur  => [qw(81 83)],
             # double strikes
             dha  => [qw(ge te)],
             dhin => [qw(ge tin)],
