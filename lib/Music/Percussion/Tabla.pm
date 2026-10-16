@@ -22,8 +22,8 @@ extends 'MIDI::Drummer::Tiny';
   print 'Soundfont: ', $t->soundfont, "\n"; # sf2 file location
 
   for (1 .. $t->bars) {
-    $t->strike('ta', $t->eighth); # write to the score
-    $t->strike('ta', $t->eighth);
+    $t->strike('te', $t->eighth); # write to the score
+    $t->strike('te', $t->eighth);
     $t->strike('dha');
     $t->strike('ge');
     $t->rest($t->quarter);
@@ -141,20 +141,19 @@ Each bol can have 1 or more patch numbers.
 
 Default single strike bol patches:
 
-  ge:   65 66 76
-  ke:   64 77 79
-  na:   78 81
-  ta:   71 75 85
-  ti:   61 68 70 72 82 86
-  tin:  60 63 83 87
-  tun:  88
+  ge:   61 69 73 76 80
+  ke:   64 68 70 74
+  na:   71 75 78
+  te:   82 84
+  tin:  79 87
+  sur:  81 83
 
 Default double strike bols:
 
-  dha:  ge ta
+  dha:  ge te
   dhin: ge tin
   dhit: ge ti
-  dhun: ge tun
+  dhun: ge tu
 
 =cut
 
@@ -171,10 +170,10 @@ has patches => (
             tin  => [qw(60 63 83 87)],
             tun  => [qw(88)],
             # double strikes
-            dha  => [qw(ge ta)],
+            dha  => [qw(ge te)],
             dhin => [qw(ge tin)],
             dhit => [qw(ge ti)],
-            dhun => [qw(ge tun)],
+            dhun => [qw(ge tu)],
         }
     },
 );
@@ -339,8 +338,8 @@ sub teentaal {
     push @strikes, $self->strike('dha', $dura);
     push @strikes, $self->strike('tin', $dura);
     push @strikes, $self->strike('tin', $dura);
-    push @strikes, $self->strike('ta', $dura);
-    push @strikes, $self->strike('ta', $dura);
+    push @strikes, $self->strike('te', $dura);
+    push @strikes, $self->strike('te', $dura);
     push @strikes, $self->strike('dhin', $dura);
     push @strikes, $self->strike('dhin', $dura);
     push @strikes, $self->strike('dha', $dura);
@@ -419,7 +418,7 @@ sub ektaal {
     push @strikes, $self->strike('ti', $dura);
     push @strikes, $self->strike('na', $dura);
     push @strikes, $self->strike('ke', $dura);
-    push @strikes, $self->strike('ta', $dura);
+    push @strikes, $self->strike('te', $dura);
     push @strikes, $self->strike('dha', $dura);
     push @strikes, $self->tirakita($dura4);
     push @strikes, $self->strike('dhin', $dura);
@@ -440,7 +439,7 @@ sub arachartaal {
     push @strikes, $self->strike('ti', $dura);
     push @strikes, $self->strike('na', $dura);
     push @strikes, $self->strike('ke', $dura);
-    push @strikes, $self->strike('ta', $dura);
+    push @strikes, $self->strike('te', $dura);
     push @strikes, $self->tirakita($dura4);
     push @strikes, $self->strike('dhit', $dura);
     push @strikes, $self->strike('na', $dura);
@@ -457,7 +456,7 @@ sub tirakita {
     push @strikes, $self->strike('ti', $dura);
     push @strikes, $self->strike('na', $dura);
     push @strikes, $self->strike('ke', $dura);
-    push @strikes, $self->strike('ta', $dura);
+    push @strikes, $self->strike('te', $dura);
     return \@strikes;
 }
 
