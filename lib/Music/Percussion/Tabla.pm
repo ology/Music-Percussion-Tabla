@@ -63,41 +63,39 @@ command, like this (on the mac):
 
   fluidsynth -a coreaudio -m coremidi -g 2.0 ~/Music/soundfont/Tabla.sf2
 
-Here are my "non-tabla player" descriptions of the sounds. And the
-proper "syllable" names for the items with a C<*> are unknown to me,
-as of yet...
+Here are the names and descriptions of the sounds:
 
-     # MIDI Description
+     # Number Name Description
     ...
-     1  60  ringing mid
-     2  61  muted low
-  *  3  62  slap
-     4  63  ringing mid slap
-     5  64  low knock
-     6  65  muted ringing low
-     7  66  lower
-  *  8  67  low-up
-     9  68  muted slap
-  * 10  69  ringing low
-    11  70  flam slap
-    12  71  loud tap
-    13  72  lowest mute
-  * 14  73  ringing low
-  * 15  74  muted low
-    16  75  loud tap double
-    17  76  high-low
-    18  77  high slap
-  * 19  78  tap
-    20  79  high knock
-  * 21  80  short low-up
-    22  81  mid tap
-    23  82  muted tap
-    24  83  mid
-  * 25  84  muted
-    26  85  loud mid double
-    27  86  slightly more muted
-    28  87  low mid
-    29  88  ringing mid
+     1  60  tu   "ringing mid"
+     2  61  ge   "muted low"
+     3  62  de   "slap"
+     4  63  din  "ringing mid slap"
+     5  64  ke   "low knock"
+     6  65  ?    "muted ringing low"
+     7  66  ?    "lower"
+     8  67  ?    "low-up"
+     9  68  ke   "muted slap"
+    10  69  ge   "ringing low"
+    11  70  ke   "flam slap"
+    12  71  na   "loud tap"
+    13  72  ne   "lowest mute"
+    14  73  ge   "ringing low open"
+    15  74  ke   "muted low"
+    16  75  na   "loud tap"
+    17  76  ge   "high-low"
+    18  77  re   "high slap"
+    19  78  na   "sharp tap"
+    20  79  tin  "high knock"
+    21  80  ge   "short low-up sliding"
+    22  81  sur  "mid tap"
+    23  82  te   "muted tap"
+    24  83  sur  "mid"
+    25  84  te   "muted"
+    26  85  thap "loud mid double"
+    27  86  ti   "slightly more muted"
+    28  87  tin  "low mid"
+    29  88  tu   "ringing mid"
   ...
 
 To play patches by number instead of name (e.g. for the C<*> unknown
