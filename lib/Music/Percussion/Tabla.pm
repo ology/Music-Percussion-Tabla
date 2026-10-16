@@ -74,9 +74,9 @@ Here are the names and descriptions of the sounds:
      3  62  de   "slap"
      4  63  din  "ringing mid slap"
      5  64  ke   "low knock"
-     6  65  ?    "muted ringing low"
-     7  66  ?    "lower"
-     8  67  ?    "low-up"
+     6  65  ge   "muted ringing low"
+     7  66  ge   "lower"
+     8  67  ge   "low-up"
      9  68  ke   "muted slap"
     10  69  ge   "ringing low"
     11  70  ke   "flam slap"
@@ -143,7 +143,7 @@ Default single strike bol patches:
 
   de:   62
   din:  63
-  ge:   61 69 73 76 80
+  ge:   61 65 66 67 69 73 76 80
   ke:   64 68 70 74
   na:   71 75 78
   ne:   72
@@ -171,7 +171,7 @@ has patches => (
             # single strikes
             de   => [qw(62)],
             din  => [qw(63)],
-            ge   => [qw(61 69 73 76 80)],
+            ge   => [qw(61 65 66 67 69 73 76 80)],
             ke   => [qw(64 68 70 74)],
             na   => [qw(71 75 78)],
             ne   => [qw(72)],
