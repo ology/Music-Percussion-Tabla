@@ -145,6 +145,7 @@ Default single strike bol patches:
   ke:   64 68 70 74
   na:   71 75 78
   te:   82 84
+  tu:   60
   ti:   86
   tin:  79 87
   sur:  81 83
@@ -167,6 +168,7 @@ has patches => (
             ke   => [qw(64 68 70 74)],
             na   => [qw(71 75 78)],
             te   => [qw(82 84)],
+            tu   => [qw(60)],
             ti   => [qw(86)],
             tin  => [qw(79 87)],
             sur  => [qw(81 83)],
@@ -221,14 +223,6 @@ C<'en'> in MIDI-Perl notation).
 (If specific patches are desired, use the C<note> method, as shown
 above.)
 
-1. Single strike bols:
-
-  ge, ke, na, ta, ti, tin, tun
-
-2. Double strike bols:
-
-  dha, dhin, dhit, dhun
-
 For a double strike, play both the baya and daya drums for the given
 B<bol> and B<duration>.
 
@@ -238,33 +232,19 @@ chosen at random, as with the single-strike.
 =cut
 
 sub strike {
-    my ($self, $bol, $dura, $return) = @_;
+    my ($self, $bol, $dura) = @_;
     $dura ||= $self->quarter;
-    my @strikes;
-    my $bols = $self->patches->{$bol};
-    if (ref $bol eq 'ARRAY') {
-        my $patches = $self->patches->{ $bol->[0] };
-        if (any { /[a-z]/ } @$patches) {
-            push @strikes, _double($self, $patches, $dura);
-        }
-        else {
-            push @strikes, _single($self, $patches, $dura);
-        }
-        $patches = $self->patches->{ $bol->[1] };
-        if (any { /[a-z]/ } @$patches) {
-            push @strikes, _double($self, $patches, $dura);
-        }
-        else {
-            push @strikes, _single($self, $patches, $dura);
-        }
-    }
-    elsif (any { /[a-z]/ } @$bols) {
-        push @strikes, _double($self, $bols, $dura);
-    }
-    else {
-        push @strikes, _single($self, $bols, $dura);
-    }
-    return \@strikes;
+    my @patches = map { _pick($self, $_) } ref $bol eq 'ARRAY' ? @$bol : $bol;
+    $self->note($dura, @patches);
+    return [ [ $dura, @patches ] ];   # same shape as before for single/double bols
+}
+
+sub _pick {
+    my ($self, $name) = @_;
+    my $patches = $self->patches->{$name} // die "Unknown bol '$name'\n";
+    return map { _pick($self, $_) } @$patches   # double bol: both members
+        if any { /[a-z]/ } @$patches;
+    return $patches->[ int rand @$patches ];    # single bol: one patch
 }
 
 sub _double {
